@@ -1,4 +1,5 @@
 import tooltipStyle from '../config/tooltipStyle'
+import colorList from '../config/colorList'
 
 //堆叠柱状图
 export default function (data, chartID, options) {
@@ -40,7 +41,7 @@ export default function (data, chartID, options) {
             type: 'bar',
             name: opts.legendName[i - 1],
             data: seriesData[i],
-            itemStyle: this._colorList[i - 1],
+            itemStyle: colorList[i - 1],
             barMaxWidth: 20,
             barCategoryGap: '30%',
             stack: '1' //相同的stack值可以堆叠放置
@@ -60,7 +61,7 @@ export default function (data, chartID, options) {
                 var returnVal = result[1].name;
                 for (var i = 0; i < result.length; i++) {
                     var marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:' + result[i].color.colorStops[0].color + ';"></span>';
-                    i == 0 && (marker = '');
+                    i === 0 && (marker = '');
                     returnVal += '<br>' + marker + result[i].seriesName + '：' + result[i].value + opts.tooltipUnit;
                 }
                 return returnVal;
