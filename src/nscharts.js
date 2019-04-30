@@ -1,13 +1,13 @@
-import pieChart from './theme/barChart';
-import pieChart from './theme/simplePieChart';
-import pieChart from './theme/labelLinePieChart';
-import pieChart from './theme/columnChart';
-import pieChart from './theme/stackedBarChart';
-import pieChart from './theme/barChart';
-import pieChart from './theme/ganttChart';
-import pieChart from './theme/lineChart';
-import pieChart from './theme/barLineChart';
-import pieChart from './theme/barDoubleLineChart';
+import pieChart from './modules/barChart';
+import pieChart from './modules/simplePieChart';
+import pieChart from './modules/labelLinePieChart';
+import pieChart from './modules/columnChart';
+import pieChart from './modules/stackedBarChart';
+import pieChart from './modules/barChart';
+import pieChart from './modules/ganttChart';
+import pieChart from './modules/lineChart';
+import pieChart from './modules/barLineChart';
+import pieChart from './modules/barDoubleLineChart';
 
 var nscharts = {
     //提示框通用样式

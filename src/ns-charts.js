@@ -4,16 +4,16 @@ import themeInit from 'config/theme-init';
 echarts.registerTheme('customed', themeInit);
 
 
-import pieChart from './theme/barChart';
-import simplePieChart from './theme/simplePieChart';
-import labelLinePieChart from './theme/labelLinePieChart';
-import columnChart from './theme/columnChart';
-import stackedBarChart from './theme/stackedBarChart';
-import barChart from './theme/barChart';
-import ganttChart from './theme/ganttChart';
-import lineChart from './theme/lineChart';
-import barLineChart from './theme/barLineChart';
-import barDoubleLineChart from './theme/barDoubleLineChart';
+import pieChart from './modules/barChart';
+import simplePieChart from './modules/simplePieChart';
+import labelLinePieChart from './modules/labelLinePieChart';
+import columnChart from './modules/columnChart';
+import stackedBarChart from './modules/stackedBarChart';
+import barChart from './modules/barChart';
+import ganttChart from './modules/ganttChart';
+import lineChart from './modules/lineChart';
+import barLineChart from './modules/barLineChart';
+import barDoubleLineChart from './modules/barDoubleLineChart';
 
 export default {
     //环形图
