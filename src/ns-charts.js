@@ -1,4 +1,7 @@
+import echarts from 'echarts';
+import themeInit from 'config/theme-init';
 
+echarts.registerTheme('customed', themeInit);
 
 
 import pieChart from './theme/barChart';

@@ -1,7 +1,5 @@
-
-
 //条形图
-export default function (data, chartID, options){
+export default function (data, chartID, options) {
     var defaultOpts = {
         gridLeft: 30,                   //图表距离容器左边界距离
         gridTop: 30,                    //上
@@ -16,8 +14,8 @@ export default function (data, chartID, options){
     var opts = Object.assign(defaultOpts, options);
     var names = [],
         nums = [];
-    for(var i = 0; i < data[0].length; i++) {
-        names.push(data[0][data[0].length - 1 - i].departmentName.replace(opts.yAxisFilter,''));
+    for (var i = 0; i < data[0].length; i++) {
+        names.push(data[0][data[0].length - 1 - i].departmentName.replace(opts.yAxisFilter, ''));
         nums.push(data[0][data[0].length - 1 - i].actualTarget);
     }
     var chart = echarts.init(document.getElementById(chartID), 'customed'),
