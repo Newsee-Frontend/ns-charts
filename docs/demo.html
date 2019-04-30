@@ -22,145 +22,134 @@
 <div id="test11"></div>
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>-->
-<script src="../plugins/jquery-1.11.2.min.js"></script>
-<script src="../src/utils/requirejs.js"></script>
-<!--<script src="../src/utils/echarts.min.js"></script>-->
-<!--<script src="../src/config/customed.js"></script>-->
-<!--<script src="../src/ns-charts.js"></script>-->
-
-
-<!--<script src="../src/ns-charts.js"></script>-->
-<!--<script src="../lib/ns-charts.js"></script>-->
-
-<script type="module" src="../src/utils/nscharts.js"></script>
+<script src="./plugins/jquery-1.11.2.min.js"></script>
+<script src="../lib/ns-charts.min.js"></script>
 <script>
-
-
-    //环形图
-    $.get('data/pie.json', function (data) {
-        nscharts.pieChart(data, 'test1', {
-            centerPosition: ['30%', '50%'],
-            radiusScale: ['52%', '68%'],
-            legendPosition: ['56%', '26%'],
-            textPosition: ['29%', '44%'],
-            text: ['各业态', '收入占比'],
-            centerFontSize: 14,
-            legendMaxRowNum: 4,
-            tooltipUnit: '元',
-            clickFn: function (result) {
-                alert(result.name + '\n' + result.value + '万元 (' + result.percent + '%)');
-            }
+    $(document).ready(function () {
+        //环形图
+        $.get('data/pie.json', function (data) {
+            nscharts.pieChart(data, 'test1', {
+                centerPosition: ['30%', '50%'],
+                radiusScale: ['52%', '68%'],
+                legendPosition: ['56%', '26%'],
+                textPosition: ['29%', '44%'],
+                text: ['各业态', '收入占比'],
+                centerFontSize: 14,
+                legendMaxRowNum: 4,
+                tooltipUnit: '元',
+                clickFn: function (result) {
+                    alert(result.name + '\n' + result.value + '万元 (' + result.percent + '%)');
+                }
+            });
+        });
+        //简单环形图
+        $.get('data/pie.simple.json', function (data) {
+            nscharts.simplePieChart(data, 'test2', {
+                radiusScale: ['52%', '68%'],
+                text: '完成率',
+                tooltipText: ['', '未完成项<br>1. 项目一<br>2. 项目二']
+            });
+        });
+        //引导线环形图
+        $.get('data/pie.json', function (data) {
+            nscharts.labelLinePieChart(data, 'test3', {
+                radiusScale: ['16%', '68%'],
+                centerPosition: ['42%', '50%'],
+                legendPosition: ['83%', '6%'],
+                legendMaxRowNum: 7,
+                tooltipUnit: '个'
+            });
+        });
+        //柱状图
+        $.get('data/bar.column.json', function (data) {
+            nscharts.columnChart(data, 'test4', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: 10,
+                tooltipUnit: '万元',
+                legendName: ['指标一', '指标二', '指标三'],
+                xAxisMaxCharNum: 3,
+                xAxisFilter: '城市公司',
+                yAxisSplitNum: 2,
+                dataZoomStyle: [0, 50, false]
+            });
+        });
+        //柱状图(含计划)
+        $.get('data/bar.column-showplan.json', function (data) {
+            nscharts.columnChart(data, 'test5', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: -10,
+                tooltipUnit: '万元',
+                legendName: ['计划', '实际'],
+                dataZoomStyle: [0, 50, false],
+                showPlan: true
+            });
+        });
+        //堆叠柱状图
+        $.get('data/bar.stacked.json', function (data) {
+            nscharts.stackedBarChart(data, 'test6', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: -10,
+                tooltipUnit: '万元',
+                legendName: ['总营收', '本年营收', '往年营收']
+            });
+        });
+        //条形图
+        $.get('data/bar.column-showplan.json', function (data) {
+            nscharts.barChart(data, 'test7', {
+                gridLeft: 10,
+                gridTop: 10,
+                gridRight: 50,
+                gridBottom: -30,
+                tooltipUnit: '万元',
+                // yAxisUnit: '万元'
+            });
+        });
+        //甘特图
+        $.get('data/bar.gantt.json', function (data) {
+            nscharts.ganttChart(data, 'test8', {
+                // scale: 3
+            });
+        });
+        //折线图
+        $.get('data/line.json', function (data) {
+            nscharts.lineChart(data, 'test9', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: 10,
+                tooltipUnit: '%',
+                legendName: ['X公司', 'Y公司']
+            });
+        });
+        //柱状单折线
+        $.get('data/bar.line.json', function (data) {
+            nscharts.barLineChart(data, 'test10', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: -10,
+                legendName: ['计划', '实际'],
+                tooltipUnit: '元',
+                yAxisSplitNum: 2
+            });
+        });
+        //柱状双折线
+        $.get('data/line.bar.json', function (data) {
+            nscharts.barDoubleLineChart(data, 'test11', {
+                gridLeft: 10,
+                gridTop: 50,
+                gridRight: 30,
+                gridBottom: -10,
+                legendName: ['净增长合同额', '接管合同额', '撤管合同额']
+            });
         });
     });
-    //简单环形图
-    $.get('data/pie.simple.json', function (data) {
-        nscharts.simplePieChart(data, 'test2', {
-            radiusScale: ['52%', '68%'],
-            text: '完成率',
-            tooltipText: ['', '未完成项<br>1. 项目一<br>2. 项目二']
-        });
-    });
-    //引导线环形图
-    $.get('data/pie.json', function (data) {
-        nscharts.labelLinePieChart(data, 'test3', {
-            radiusScale: ['16%', '68%'],
-            centerPosition: ['42%', '50%'],
-            legendPosition: ['83%', '6%'],
-            legendMaxRowNum: 7,
-            tooltipUnit: '个'
-        });
-    });
-    //柱状图
-    $.get('data/bar.column.json', function (data) {
-        nscharts.columnChart(data, 'test4', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: 10,
-            tooltipUnit: '万元',
-            legendName: ['指标一', '指标二', '指标三'],
-            xAxisMaxCharNum: 3,
-            xAxisFilter: '城市公司',
-            yAxisSplitNum: 2,
-            dataZoomStyle: [0, 50, false]
-        });
-    });
-    //柱状图(含计划)
-    $.get('data/bar.column-showplan.json', function (data) {
-        nscharts.columnChart(data, 'test5', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: -10,
-            tooltipUnit: '万元',
-            legendName: ['计划', '实际'],
-            dataZoomStyle: [0, 50, false],
-            showPlan: true
-        });
-    });
-    //堆叠柱状图
-    $.get('data/bar.stacked.json', function (data) {
-        nscharts.stackedBarChart(data, 'test6', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: -10,
-            tooltipUnit: '万元',
-            legendName: ['总营收', '本年营收', '往年营收']
-        });
-    });
-    //条形图
-    $.get('data/bar.column-showplan.json', function (data) {
-        nscharts.barChart(data, 'test7', {
-            gridLeft: 10,
-            gridTop: 10,
-            gridRight: 50,
-            gridBottom: -30,
-            tooltipUnit: '万元',
-            // yAxisUnit: '万元'
-        });
-    });
-    //甘特图
-    $.get('data/bar.gantt.json', function (data) {
-        nscharts.ganttChart(data, 'test8', {
-            // scale: 3
-        });
-    });
-    //折线图
-    $.get('data/line.json', function (data) {
-        nscharts.lineChart(data, 'test9', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: 10,
-            tooltipUnit: '%',
-            legendName: ['X公司', 'Y公司']
-        });
-    });
-    //柱状单折线
-    $.get('data/bar.line.json', function (data) {
-        nscharts.barLineChart(data, 'test10', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: -10,
-            legendName: ['计划', '实际'],
-            tooltipUnit: '元',
-            yAxisSplitNum: 2
-        });
-    });
-    //柱状双折线
-    $.get('data/line.bar.json', function (data) {
-        nscharts.barDoubleLineChart(data, 'test11', {
-            gridLeft: 10,
-            gridTop: 50,
-            gridRight: 30,
-            gridBottom: -10,
-            legendName: ['净增长合同额', '接管合同额', '撤管合同额']
-        });
-    });
-
-
 </script>
 </body>
 </html>
