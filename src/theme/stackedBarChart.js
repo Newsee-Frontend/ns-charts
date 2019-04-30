@@ -25,20 +25,20 @@ export default function (data, chartID, options) {
         sumName = opts.legendName[0],
         sumData = {};
     opts.legendName.shift();
-    for(var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
         seriesData.push([]);
-        for(var j = 0; j < data[i].length; j++){
-            if(i == 0){
-                xAxisNames.push(data[i][j].departmentName.replace(opts.xAxisFilter,''));
-                sumData[data[i][j].departmentName.replace(opts.xAxisFilter,'')] = data[i][j].actualTarget;
+        for (var j = 0; j < data[i].length; j++) {
+            if (i == 0) {
+                xAxisNames.push(data[i][j].departmentName.replace(opts.xAxisFilter, ''));
+                sumData[data[i][j].departmentName.replace(opts.xAxisFilter, '')] = data[i][j].actualTarget;
                 continue;
             }
             seriesData[i].push(data[i][j].actualTarget);
         }
-        if(i == 0) continue;
+        if (i == 0) continue;
         series.push({
             type: 'bar',
-            name: opts.legendName[i-1],
+            name: opts.legendName[i - 1],
             data: seriesData[i],
             itemStyle: this._colorList[i - 1],
             barMaxWidth: 20,
@@ -49,16 +49,16 @@ export default function (data, chartID, options) {
     var chart = echarts.init(document.getElementById(chartID), 'customed'),
         tooltip = Object.assign({
             trigger: 'axis',
-            formatter: function (result){
+            formatter: function (result) {
                 result.unshift({
                     seriesName: sumName,
                     value: sumData[result[0].name],
                     color: {
-                        colorStops:[{ color: 'white' }]
+                        colorStops: [{color: 'white'}]
                     }
                 });
                 var returnVal = result[1].name;
-                for(var i = 0; i < result.length; i++){
+                for (var i = 0; i < result.length; i++) {
                     var marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:' + result[i].color.colorStops[0].color + ';"></span>';
                     i == 0 && (marker = '');
                     returnVal += '<br>' + marker + result[i].seriesName + '：' + result[i].value + opts.tooltipUnit;
@@ -85,11 +85,11 @@ export default function (data, chartID, options) {
             axisLabel: {
                 lineHeight: opts.xAxisFontSize,
                 fontSize: opts.xAxisFontSize,
-                formatter: function (value){
+                formatter: function (value) {
                     var str = '',
                         maxLength = opts.xAxisMaxCharNum,
                         rowNum = Math.ceil(value.length / maxLength);
-                    for(var i = 0; i < rowNum; i++) {
+                    for (var i = 0; i < rowNum; i++) {
                         var part = value.slice(i * maxLength, (i + 1) * maxLength);
                         rowNum - 1 > 0 && (part += '\n');
                         str += part;
@@ -102,7 +102,7 @@ export default function (data, chartID, options) {
             type: 'value',
             splitNumber: opts.yAxisSplitNum,
             axisLabel: {
-                formatter: function (value){
+                formatter: function (value) {
                     return value + opts.yAxisUnit;
                 }
             }
