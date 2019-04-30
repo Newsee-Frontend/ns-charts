@@ -1,3 +1,5 @@
+import tooltipStyle from '../config/tooltipStyle'
+
 //甘特图(时间跨度最大为本年1月到次年1月)
 export default function (data, chartID, options){
     var defaultOpts = {
@@ -82,7 +84,7 @@ export default function (data, chartID, options){
                 }
                 return result.name + '<br>' + startYear + startMonth.toString().replace(/^(\d)$/,'0$1') + '~' + endYear + endMonth.toString().replace(/^(\d)$/,'0$1');
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {

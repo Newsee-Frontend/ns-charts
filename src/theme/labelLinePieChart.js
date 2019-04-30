@@ -1,3 +1,5 @@
+import tooltipStyle from '../config/tooltipStyle'
+
 //显示引导线的环形图
 export default function (data, chartID, options){
     var defaultOpts = {
@@ -41,7 +43,7 @@ export default function (data, chartID, options){
                 }
                 return result.name + '<br>' + result.value + unit + ' (' + result.percent + '%)';
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         legend: {

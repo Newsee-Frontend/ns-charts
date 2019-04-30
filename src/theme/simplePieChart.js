@@ -1,5 +1,5 @@
 import {toFixed} from '../utils'
-
+import tooltipStyle from '../config/tooltipStyle'
 
 //简单环形图
 export default function (data, chartID, options) {
@@ -33,7 +33,7 @@ export default function (data, chartID, options) {
                     return opts.tooltipText[1];
                 }
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         title: {
             text: opts.text,

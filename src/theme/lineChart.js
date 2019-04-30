@@ -1,3 +1,5 @@
+import tooltipStyle from '../config/tooltipStyle'
+
 //折线图
 export default function (data, chartID, options){
     var defaultOpts = {
@@ -17,7 +19,7 @@ export default function (data, chartID, options){
         clickFn: null                   //点击事件
     };
     var opts = Object.assign(defaultOpts, options);
-    var _colorList = [{
+    var colorList = [{
         color: '#15a3ff'
     }, {
         color: '#ff6161'
@@ -86,7 +88,7 @@ export default function (data, chartID, options){
             type: 'line',
             name: opts.legendName[i],
             data: seriesData[i],
-            itemStyle: _colorList[i],
+            itemStyle: colorList[i],
             areaStyle: colorLinearList[i]
         });
     }
@@ -111,7 +113,7 @@ export default function (data, chartID, options){
                 }
                 return returnVal;
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {

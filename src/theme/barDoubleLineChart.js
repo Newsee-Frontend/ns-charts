@@ -1,3 +1,5 @@
+import tooltipStyle from '../config/tooltipStyle'
+
 //柱状双折线图
 export default function (data, chartID, options){
     var defaultOpts = {
@@ -88,7 +90,7 @@ export default function (data, chartID, options){
                 }
                 return returnVal;
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {

@@ -1,3 +1,5 @@
+import tooltipStyle from '../config/tooltipStyle'
+
 //环形图
 export default function (data, chartID, options){ // data--数据，chartID--放置图表的元素id，options包含了下列参数
     var defaultOpts = {
@@ -46,7 +48,7 @@ export default function (data, chartID, options){ // data--数据，chartID--放
                 }
                 return result.name + '<br>' + result.value + unit + ' (' + result.percent + '%)';
             }
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         title: {
             text: opts.text[0],

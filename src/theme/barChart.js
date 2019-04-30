@@ -1,4 +1,4 @@
-
+import tooltipStyle from '../config/tooltipStyle'
 
 //条形图
 export default function (data, chartID, options){
@@ -24,7 +24,7 @@ export default function (data, chartID, options){
         tooltip = Object.assign({
             trigger: 'item',
             formatter: '{b0}<br>{c0}' + opts.tooltipUnit,
-        }, this._tooltipStyle);
+        }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {
