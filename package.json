@@ -18,8 +18,7 @@
   "homepage": "https://github.com/Newsee-Frontend/ns-charts#readme",
   "dependencies": {
     "echarts": "^4.2.1",
-    "jquery": "1.11.2",
-    "requirejs": "^2.3.6"
+    "jquery": "1.11.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

@@ -1,3 +1,4 @@
+import colorList from '../config/colorList'
 import tooltipStyle from '../config/tooltipStyle'
 
 //条形图
