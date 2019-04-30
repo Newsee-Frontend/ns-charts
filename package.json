@@ -1,0 +1,23 @@
+{
+  "name": "ns-charts",
+  "version": "1.0.0",
+  "description": "charts for newsee project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Newsee-Frontend/ns-charts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Newsee-Frontend/ns-charts/issues"
+  },
+  "homepage": "https://github.com/Newsee-Frontend/ns-charts#readme",
+  "dependencies": {
+    "echarts": "^4.2.1",
+    "jquery": "1.11.2"
+  }
+}
