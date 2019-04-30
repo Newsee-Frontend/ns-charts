@@ -21,33 +21,21 @@
 <div id="test10"></div>
 <div id="test11"></div>
 
-<script src="../src/utils/jquery-1.11.2.min.js"></script>
-<script src="../src/utils/echarts.min.js"></script>
-<script src="../src/config/customed.js"></script>
-<script src="../src/nscharts.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>-->
+<script src="../plugins/jquery-1.11.2.min.js"></script>
+<script src="../src/utils/requirejs.js"></script>
+<!--<script src="../src/utils/echarts.min.js"></script>-->
+<!--<script src="../src/config/customed.js"></script>-->
+<!--<script src="../src/ns-charts.js"></script>-->
 
+
+<!--<script src="../src/ns-charts.js"></script>-->
+<!--<script src="../lib/ns-charts.js"></script>-->
+
+<script type="module" src="../src/utils/nscharts.js"></script>
 <script>
-    //相当于Object.assign()
-    function assign(obj1, obj2) {
-        for (var key in obj2) {
-            obj2.hasOwnProperty(key) === true && (obj1[key] = obj2[key]);//此处hasOwnProperty是判断自有属性
-        }
-        return obj1;
-    }
 
-    //修复toFixed
-    Number.prototype.toFixed = function (len) {//修复浮点数精度丢失的引起“四舍五不入”问题(Chrome/Firefox)
-        var mul = Math.pow(10, len);
-        var temp = Math.round(this * mul) / mul + '';//null+''不会引起报错
-        if (len !== 0) {
-            temp.indexOf('.') === -1 && (temp += '.');//保留小数时加小数点
-            var num = temp.length - temp.indexOf('.') - 1;//获取小数点后0的个数
-            for (var i = 0; i < len - num; i++) {//补0
-                temp += '0';
-            }
-        }
-        return temp;
-    };
+
     //环形图
     $.get('data/pie.json', function (data) {
         nscharts.pieChart(data, 'test1', {
@@ -171,6 +159,8 @@
             legendName: ['净增长合同额', '接管合同额', '撤管合同额']
         });
     });
+
+
 </script>
 </body>
 </html>

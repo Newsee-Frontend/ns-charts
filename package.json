@@ -2,22 +2,42 @@
   "name": "ns-charts",
   "version": "1.0.0",
   "description": "charts for newsee project",
+  "author": "BroccoliSpring <Lensgcx@163.com>",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production node build/run.build.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Newsee-Frontend/ns-charts.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Newsee-Frontend/ns-charts/issues"
   },
   "homepage": "https://github.com/Newsee-Frontend/ns-charts#readme",
   "dependencies": {
     "echarts": "^4.2.1",
-    "jquery": "1.11.2"
+    "jquery": "1.11.2",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "fs-extra": "^7.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify": "^3.0.1",
+    "gulp-util": "^3.0.8",
+    "@babel/core": "^7.2.2",
+    "babel-loader": "^8.0.5",
+    "webpack": "4.16.5",
+    "webpack-cli": "3.1.0",
+    "ora": "^1.2.0",
+    "chalk": "2.4.1",
+    "cross-env": "5.2.0"
   }
 }
