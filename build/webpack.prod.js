@@ -3,14 +3,29 @@ var path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
-        'ns-charts': './src/ns-charts.js'
+        'nsCharts': './src/ns-charts.js',
+        // 'gcx': './test/gcx.js'
     },
     output: {
         path: path.resolve('./lib'),
-        library: 'ns-charts',
-        filename: '[name].min.js'
+        library: 'nsCharts',
+        libraryTarget: 'umd',
+        filename: '[name].min.js',
+        umdNamedDefine: true,
+
+        // path: path.resolve('./lib'),
+        // library: 'gcx',
+        // filename: '[name].min.js'
     },
     performance: false,
+    externals: {
+        echarts: {
+            root: 'echarts',
+            commonjs: 'echarts',
+            commonjs2: 'echarts',
+            amd: 'echarts'
+        }
+    },
     module: {
         rules: [
             {

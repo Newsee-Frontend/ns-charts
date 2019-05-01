@@ -1,3 +1,4 @@
+import echarts from 'echarts'
 import {toFixed} from '../utils'
 import tooltipStyle from '../config/tooltipStyle'
 

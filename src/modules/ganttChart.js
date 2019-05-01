@@ -1,3 +1,4 @@
+import echarts from 'echarts'
 import tooltipStyle from '../config/tooltipStyle'
 
 //甘特图(时间跨度最大为本年1月到次年1月)

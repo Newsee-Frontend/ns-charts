@@ -1,3 +1,4 @@
+import echarts from 'echarts'
 import colorList from '../config/colorList'
 import tooltipStyle from '../config/tooltipStyle'
 

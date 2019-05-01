@@ -5,11 +5,12 @@ var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var gutil = require('gulp-util');
 var notify = require('gulp-notify');
-
+var _module_name = 'ns-charts.js';
 var _base_path = 'src/';
-var _base_dist_path = 'lib';
+var _base_path_leaf = '**/*.js';
+var _base_dist_path = 'es';
 
-var t = 0;       								       //计数开始为0
+var t = 0;
 var showinfo = function () {
     t++;
     var curDate = new Date();
@@ -22,14 +23,16 @@ var showinfo = function () {
 };
 
 
+process.env.BABEL_MODULE = 'commonjs';
+
+
 gulp.task('js-handle', function () {
-    gulp.src(_base_path + 'nscharts.js')
+    gulp.src([_base_path + _base_path_leaf, '!src/ns-charts.js'])
         .pipe(babel())
         .pipe(uglify({
             mangle: true,
             compress: true
         }))
-        // .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(_base_dist_path))
         .on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
@@ -37,13 +40,30 @@ gulp.task('js-handle', function () {
         .pipe(notify({message: '===== babel and uglify task complete ====='}));
 });
 
+gulp.task('entry-rename', function () {
+    gulp.src(_base_path + _module_name)
+        .pipe(babel())
+        .pipe(uglify({
+            mangle: true,
+            compress: true
+        }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(_base_dist_path))
+        .on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
+});
 
 gulp.task('watch', () => {
-    gulp.watch(_base_path + '**/*.js', ['js-handle']).on('change', function (event) {
+    gulp.watch(_base_path + _base_path_leaf, ['js-handle']).on('change', function (event) {
+        console.log('File ' + event.path + ' was ' + event.type + showinfo() + '')
+    });
+    gulp.watch(_base_path + _module_name, ['entry-rename']).on('change', function (event) {
         console.log('File ' + event.path + ' was ' + event.type + showinfo() + '')
     });
 
 });
 
-gulp.task('default', ['js-handle', 'watch']);
+
+gulp.task('default', ['js-handle', 'entry-rename', 'watch']);
 

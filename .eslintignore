@@ -1,0 +1,10 @@
+/build/
+/dist/
+/src/
+/docs/
+/es/
+/lib/
+/test/
+/script/
+/node_modules/
+/*.js

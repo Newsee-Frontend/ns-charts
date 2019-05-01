@@ -4,8 +4,7 @@
  * @param len
  * @returns {string}
  */
-
-export const toFixed = (result,num, len) => {
+export const toFixed = (num, len) => {
     const mul = Math.pow(10, len);
     let temp = Math.round(num * mul) / mul + '';//null+''不会引起报错
     if (len !== 0) {

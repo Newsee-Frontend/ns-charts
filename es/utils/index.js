@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.toFixed=void 0;var toFixed=function(e,t){var o=Math.pow(10,t),r=Math.round(e*o)/o+"";if(0!==t){-1===r.indexOf(".")&&(r+=".");for(var i=r.length-r.indexOf(".")-1,d=0;d<t-i;d++)r+="0"}return r};exports.toFixed=toFixed;

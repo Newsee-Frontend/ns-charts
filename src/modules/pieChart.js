@@ -1,3 +1,4 @@
+import echarts from 'echarts'
 import tooltipStyle from '../config/tooltipStyle'
 
 //环形图

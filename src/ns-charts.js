@@ -1,39 +1,85 @@
-import echarts from 'echarts';
-import themeInit from 'config/theme-init';
+import echarts from 'echarts'
+
+const packageJson = require('../package.json');
+const version = packageJson.version;
+
+import themeInit from './config/theme-init';
 
 echarts.registerTheme('customed', themeInit);
 
 
-import pieChart from './modules/barChart';
+//环形图
+import pieChart from './modules/pieChart';
+
+//简单环形图
 import simplePieChart from './modules/simplePieChart';
+//显示引导线的环形图
 import labelLinePieChart from './modules/labelLinePieChart';
+//柱状图
 import columnChart from './modules/columnChart';
+//堆叠柱状图
 import stackedBarChart from './modules/stackedBarChart';
+//条形图
 import barChart from './modules/barChart';
+//甘特图(时间跨度最大为本年1月到次年1月)
 import ganttChart from './modules/ganttChart';
+//折线图
 import lineChart from './modules/lineChart';
+//柱状单折线图
 import barLineChart from './modules/barLineChart';
+//柱状双折线图
 import barDoubleLineChart from './modules/barDoubleLineChart';
 
+const test123 = function () {
+    return '高仓雄'
+};
+
+export {
+    version,
+    test123,
+
+    pieChart,
+
+
+    simplePieChart,
+
+    labelLinePieChart,
+
+    columnChart,
+
+    stackedBarChart,
+
+    barChart,
+
+    ganttChart,
+
+    lineChart,
+
+    barLineChart,
+
+    barDoubleLineChart
+}
+
 export default {
-    //环形图
-    ...pieChart,
-    //简单环形图
-    ...simplePieChart,
-    //显示引导线的环形图
-    ...labelLinePieChart,
-    //柱状图
-    ...columnChart,
-    //堆叠柱状图
-    ...stackedBarChart,
-    //条形图
-    ...barChart,
-    //甘特图(时间跨度最大为本年1月到次年1月)
-    ...ganttChart,
-    //折线图
-    ...lineChart,
-    //柱状单折线图
-    ...barLineChart,
-    //柱状双折线图
-    ...barDoubleLineChart
+    version,
+    test123,
+    pieChart,
+
+    simplePieChart,
+
+    labelLinePieChart,
+
+    columnChart,
+
+    stackedBarChart,
+
+    barChart,
+
+    ganttChart,
+
+    lineChart,
+
+    barLineChart,
+
+    barDoubleLineChart
 };

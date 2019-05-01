@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-<div id="test1"></div>
-<div id="test2"></div>
-<div id="test3" style="width: 500px;"></div>
-<div id="test4"></div>
-<div id="test5"></div>
-<div id="test6"></div>
-<div id="test7"></div>
-<div id="test8"></div>
-<div id="test9"></div>
-<div id="test10"></div>
-<div id="test11"></div>
+<div id="test1" class="charts-blcok"></div>
+<div id="test2" class="charts-blcok"></div>
+<div id="test3" style="width: 500px;" class="charts-blcok"></div>
+<div id="test4" class="charts-blcok"></div>
+<div id="test5" class="charts-blcok"></div>
+<div id="test6" class="charts-blcok"></div>
+<div id="test7" class="charts-blcok"></div>
+<div id="test8" class="charts-blcok"></div>
+<div id="test9" class="charts-blcok"></div>
+<div id="test10" class="charts-blcok"></div>
+<div id="test11" class="charts-blcok"></div>
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>-->
 <script src="./plugins/jquery-1.11.2.min.js"></script>
-<script src="../lib/ns-charts.min.js"></script>
+<script src="./plugins/echarts.min.js"></script>
+<script src="../../dist/nsCharts.min.js"></script>
 <script>
+    console.log(nsCharts);
     $(document).ready(function () {
+        var baseUrl = '../SPA/static/chartsData/';
         //环形图
-        $.get('data/pie.json', function (data) {
-            nscharts.pieChart(data, 'test1', {
+        $.get(baseUrl + 'pie.json', function (data) {
+            nsCharts.pieChart(data, 'test1', {
                 centerPosition: ['30%', '50%'],
                 radiusScale: ['52%', '68%'],
                 legendPosition: ['56%', '26%'],
@@ -43,16 +45,16 @@
             });
         });
         //简单环形图
-        $.get('data/pie.simple.json', function (data) {
-            nscharts.simplePieChart(data, 'test2', {
+        $.get(baseUrl + 'pie.simple.json', function (data) {
+            nsCharts.simplePieChart(data, 'test2', {
                 radiusScale: ['52%', '68%'],
                 text: '完成率',
                 tooltipText: ['', '未完成项<br>1. 项目一<br>2. 项目二']
             });
         });
         //引导线环形图
-        $.get('data/pie.json', function (data) {
-            nscharts.labelLinePieChart(data, 'test3', {
+        $.get(baseUrl + 'pie.json', function (data) {
+            nsCharts.labelLinePieChart(data, 'test3', {
                 radiusScale: ['16%', '68%'],
                 centerPosition: ['42%', '50%'],
                 legendPosition: ['83%', '6%'],
@@ -61,8 +63,8 @@
             });
         });
         //柱状图
-        $.get('data/bar.column.json', function (data) {
-            nscharts.columnChart(data, 'test4', {
+        $.get(baseUrl + 'bar.column.json', function (data) {
+            nsCharts.columnChart(data, 'test4', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
@@ -76,8 +78,8 @@
             });
         });
         //柱状图(含计划)
-        $.get('data/bar.column-showplan.json', function (data) {
-            nscharts.columnChart(data, 'test5', {
+        $.get(baseUrl + 'bar.column-showplan.json', function (data) {
+            nsCharts.columnChart(data, 'test5', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
@@ -89,8 +91,8 @@
             });
         });
         //堆叠柱状图
-        $.get('data/bar.stacked.json', function (data) {
-            nscharts.stackedBarChart(data, 'test6', {
+        $.get(baseUrl + 'bar.stacked.json', function (data) {
+            nsCharts.stackedBarChart(data, 'test6', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
@@ -100,8 +102,8 @@
             });
         });
         //条形图
-        $.get('data/bar.column-showplan.json', function (data) {
-            nscharts.barChart(data, 'test7', {
+        $.get(baseUrl + 'bar.column-showplan.json', function (data) {
+            nsCharts.barChart(data, 'test7', {
                 gridLeft: 10,
                 gridTop: 10,
                 gridRight: 50,
@@ -111,14 +113,14 @@
             });
         });
         //甘特图
-        $.get('data/bar.gantt.json', function (data) {
-            nscharts.ganttChart(data, 'test8', {
+        $.get(baseUrl + 'bar.gantt.json', function (data) {
+            nsCharts.ganttChart(data, 'test8', {
                 // scale: 3
             });
         });
         //折线图
-        $.get('data/line.json', function (data) {
-            nscharts.lineChart(data, 'test9', {
+        $.get(baseUrl + 'line.json', function (data) {
+            nsCharts.lineChart(data, 'test9', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
@@ -128,8 +130,8 @@
             });
         });
         //柱状单折线
-        $.get('data/bar.line.json', function (data) {
-            nscharts.barLineChart(data, 'test10', {
+        $.get(baseUrl + 'bar.line.json', function (data) {
+            nsCharts.barLineChart(data, 'test10', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
@@ -140,8 +142,8 @@
             });
         });
         //柱状双折线
-        $.get('data/line.bar.json', function (data) {
-            nscharts.barDoubleLineChart(data, 'test11', {
+        $.get(baseUrl + 'line.bar.json', function (data) {
+            nsCharts.barDoubleLineChart(data, 'test11', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,

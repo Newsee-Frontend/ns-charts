@@ -1,7 +1,8 @@
+import echarts from 'echarts'
 import tooltipStyle from '../config/tooltipStyle'
 
 //折线图
-export default function (data, chartID, options){
+export default function (data, chartID, options) {
     var defaultOpts = {
         gridLeft: 30,                   //图表距离容器左边界距离
         gridTop: 60,                    //上
@@ -76,12 +77,12 @@ export default function (data, chartID, options){
     var xAxisNames = [],
         series = [],
         seriesData = [];
-    for(var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
         seriesData.push([]);
-        for(var j = 0; j < data[i].length; j++){
+        for (var j = 0; j < data[i].length; j++) {
             var date = data[i][j].date;
-            date.length == 5 && (date = date.slice(0,4) + '0' + date.slice(4)); //补零
-            i == 0 && xAxisNames.push(date.replace(opts.xAxisFilter,''));
+            date.length == 5 && (date = date.slice(0, 4) + '0' + date.slice(4)); //补零
+            i == 0 && xAxisNames.push(date.replace(opts.xAxisFilter, ''));
             seriesData[i].push(data[i][j].actualTarget);
         }
         series.push({
@@ -106,9 +107,9 @@ export default function (data, chartID, options){
                 },
                 z: 0
             },
-            formatter: function (result){
+            formatter: function (result) {
                 var returnVal = result[0].name;
-                for(var i = 0; i < result.length; i++){
+                for (var i = 0; i < result.length; i++) {
                     returnVal += '<br>' + result[i].marker + result[i].seriesName + '：' + result[i].value + opts.tooltipUnit;
                 }
                 return returnVal;
@@ -133,11 +134,11 @@ export default function (data, chartID, options){
             axisLabel: {
                 lineHeight: opts.xAxisFontSize,
                 fontSize: opts.xAxisFontSize,
-                formatter: function (value){
+                formatter: function (value) {
                     var str = '',
                         maxLength = opts.xAxisMaxCharNum,
                         rowNum = Math.ceil(value.length / maxLength);
-                    for(var i = 0; i < rowNum; i++) {
+                    for (var i = 0; i < rowNum; i++) {
                         var part = value.slice(i * maxLength, (i + 1) * maxLength);
                         rowNum - 1 > 0 && (part += '\n');
                         str += part;
@@ -150,7 +151,7 @@ export default function (data, chartID, options){
             type: 'value',
             splitNumber: opts.yAxisSplitNum,
             axisLabel: {
-                formatter: function(value){
+                formatter: function (value) {
                     return value + opts.yAxisUnit;
                 }
             }
@@ -171,5 +172,5 @@ export default function (data, chartID, options){
         }],
         series: series
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', opts.clickFn));
 };
