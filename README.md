@@ -35,11 +35,13 @@ npm run command:mac = > 1
 npm run command:mac => 2
 
 # build for production with minification
-npm run command:mac => 3
+npm run command:mac => 9
 
-# build for production and view the bundle analyzer report
-npm run command:mac => 4
+# run for lint && prettier Menu
+npm run command:mac => 5
 
+# update all package modules
+npm run command:mac => 8
 
 ```
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
