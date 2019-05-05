@@ -1,15 +1,14 @@
 {
   "name": "ns-charts",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "charts for newsee project",
   "author": "BroccoliSpring <Lensgcx@163.com>",
   "license": "ISC",
-  "main": "index.js",
+  "main": "es/ns-charts.min.js",
   "scripts": {
-    "command": "node_modules/cx-builder/lib/menu.sh root",
+    "command": "node_modules\\cx-builder\\lib\\menu.sh root",
     "command:mac": "node_modules/cx-builder/lib/menu.sh root",
-    "build": "cross-env NODE_ENV=production node build/run.build.js",
-    "test123": "node build/compiler.js --color"
+    "compiler": "node ./build/exec-compile.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,9 @@
   "homepage": "https://github.com/Newsee-Frontend/ns-charts#readme",
   "dependencies": {
     "echarts": "^4.2.1",
+    "gulp-sourcemaps": "^2.6.5",
     "jquery": "1.11.2",
+    "signale": "^1.4.0",
     "vue": "2.5.21"
   },
   "devDependencies": {

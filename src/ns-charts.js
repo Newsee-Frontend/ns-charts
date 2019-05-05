@@ -31,7 +31,7 @@ import barLineChart from './modules/barLineChart';
 import barDoubleLineChart from './modules/barDoubleLineChart';
 
 const test123 = function () {
-    return '高仓雄'
+    return '高仓雄123'
 };
 
 export {
