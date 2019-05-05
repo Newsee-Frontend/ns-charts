@@ -19,7 +19,6 @@ var _base_dist_path = '../es';
 process.env.BABEL_MODULE = 'commonjs';
 var babelConfig = require('../babel.config');
 
-console.log(process.env.BABEL_MODULE !== 'commonjs')
 
 var t = 0;
 var showinfo = function () {
