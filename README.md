@@ -13,6 +13,15 @@ npm run command
 npm run command:mac
 
 ```
+## compile action
+### In this way you can compile in coding, following commands:
+
+``` bash
+# run with compile ns-charts
+npm run compiler
+```
+
+```
 ## Menu action
 ### In the action menu, you can execute the following commands:
 
