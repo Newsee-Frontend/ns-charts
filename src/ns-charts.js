@@ -30,13 +30,13 @@ import barLineChart from './modules/barLineChart';
 //柱状双折线图
 import barDoubleLineChart from './modules/barDoubleLineChart';
 
-const test1234 = function () {
+const testgcx = function () {
     return '高仓雄'
 };
 
 export {
     version,
-    test1234,
+    testgcx,
 
     pieChart,
 
@@ -62,7 +62,7 @@ export {
 
 export default {
     version,
-    test1234,
+    testgcx,
     pieChart,
 
     simplePieChart,
