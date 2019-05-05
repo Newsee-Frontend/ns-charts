@@ -1,33 +1,28 @@
-#  NewSee - Charts project （ base on echarts)
+#  NewSee - Charts project
 
-> Mobile project for charge-easy
+> This project base on echarts，used to newsee V8 /  V9 / V10，support SPA / MPA peoject.
 
-## Build Setup
+## Build  Setup
 
+#### install dependencies
 ``` bash
-# install dependencies
 npm install | yarn
-
-##  open command menu
+```
+#### open command menu
+``` bash
 npm run command
 npm run command:mac
-
 ```
 
-```
-
-## compile action
-### In this way you can compile in coding, following commands:
+#### run with compile ns-charts
+#####  In this way you can compile in coding, following commands:
 
 ``` bash
-# run with compile ns-charts
 npm run compiler
-
 ```
 
-```
-## Menu action
-### In the action menu, you can execute the following commands:
+####  Menu action
+##### In the action menu, you can execute the following commands:
 
 ``` bash
 # run with compile ns-charts
