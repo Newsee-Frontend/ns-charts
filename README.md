@@ -47,4 +47,6 @@ npm run command:mac => 5
 npm run command:mac => 8
 
 ```
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+<div align="center">
+  <img width="600" src="https://github.com/Newsee-Frontend/ns-charts/blob/master/md/charts-mobile.png?raw=true">
+</div>
