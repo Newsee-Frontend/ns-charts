@@ -1,7 +1,7 @@
-<p align="center">
+<div align="center">
   <h1>NewSee - Charts project</h1>
-  <img width="480" src="https://github.com/Newsee-Frontend/ns-charts/blob/master/md/charts-pc.png?raw=true">
-</p>
+  <img width="600" src="https://github.com/Newsee-Frontend/ns-charts/blob/master/md/charts-pc.png?raw=true">
+</div>
 
 > This project base on echarts，used to newsee V8 /  V9 / V10，support SPA / MPA peoject.
 
