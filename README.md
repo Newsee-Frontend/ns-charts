@@ -11,21 +11,21 @@
 npm install | yarn
 ```
 
-### second  Setup
+### second  Setup :two:
 ####  run with compile ns-charts
 #####  In this way you can compile in coding, following commands:
 ``` bash
 npm run compiler
 ```
 
-### Third  Setup
+### Third  Setup :three:
 #### open command menu
 ``` bash
 npm run command
 npm run command:mac
 ```
 
-### Action menu
+### Action menu :book:
 #####  In the action menu, you can execute the following commands:
 
 ``` bash
@@ -48,11 +48,11 @@ npm run command:mac => 5
 npm run command:mac => 8
 
 ```
-#####  You can execute the following commands to run project:
+#####  You can execute the following commands to run project :four: :
 ``` bash
 npm run command | npm run command:mac = > 1 | 2
 ```
-###  Build  Setup
+###  Build  Setup :package:
 ``` bash
 npm run command | npm run command:mac = > 9
 ```
