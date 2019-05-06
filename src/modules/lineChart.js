@@ -3,7 +3,7 @@ import tooltipStyle from '../config/tooltipStyle'
 
 //折线图
 export default function (data, chartID, options) {
-    var defaultOpts = {
+    const defaultOpts = {
         gridLeft: 30,                   //图表距离容器左边界距离
         gridTop: 60,                    //上
         gridRight: 30,                  //右
@@ -18,9 +18,8 @@ export default function (data, chartID, options) {
         yAxisSplitNum: 5,               //Y轴分割线个数
         dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
         clickFn: null                   //点击事件
-    };
-    var opts = Object.assign(defaultOpts, options);
-    var colorList = [{
+    }, opts = Object.assign(defaultOpts, options);
+    const colorList = [{
         color: '#15a3ff'
     }, {
         color: '#ff6161'
@@ -28,8 +27,7 @@ export default function (data, chartID, options) {
         color: '#4ed552'
     }, {
         color: '#ffc715'
-    }];
-    var colorLinearList = [{
+    }], colorLinearList = [{
         normal: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
                 offset: 0,
@@ -74,15 +72,13 @@ export default function (data, chartID, options) {
             opacity: 0.3
         }
     }];
-    var xAxisNames = [],
-        series = [],
-        seriesData = [];
-    for (var i = 0; i < data.length; i++) {
+    let [xAxisNames, seriesData, series] = [[], [], []];
+    for (let i = 0; i < data.length; i++) {
         seriesData.push([]);
-        for (var j = 0; j < data[i].length; j++) {
-            var date = data[i][j].date;
-            date.length == 5 && (date = date.slice(0, 4) + '0' + date.slice(4)); //补零
-            i == 0 && xAxisNames.push(date.replace(opts.xAxisFilter, ''));
+        for (let j = 0; j < data[i].length; j++) {
+            let date = data[i][j].date;
+            date.length === 5 && (date = `${date.slice(0, 4)}0${date.slice(4)}`); //补零
+            i === 0 && xAxisNames.push(date.replace(opts.xAxisFilter, ''));
             seriesData[i].push(data[i][j].actualTarget);
         }
         series.push({
@@ -93,28 +89,32 @@ export default function (data, chartID, options) {
             areaStyle: colorLinearList[i]
         });
     }
-    var chart = echarts.init(document.getElementById(chartID), 'customed'),
-        tooltip = Object.assign({
-            trigger: 'axis',
-            axisPointer: {
-                type: 'line',
-                lineStyle: {
-                    color: '#ccc',
-                    width: 1
-                },
-                label: {
-                    precision: 2
-                },
-                z: 0
+    let chart = echarts.init(document.getElementById(chartID), 'customed');
+    const tooltip = Object.assign({
+        trigger: 'axis',
+        axisPointer: {
+            type: 'line',
+            lineStyle: {
+                color: '#ccc',
+                width: 1
             },
-            formatter: function (result) {
-                var returnVal = result[0].name;
-                for (var i = 0; i < result.length; i++) {
-                    returnVal += '<br>' + result[i].marker + result[i].seriesName + '：' + result[i].value + opts.tooltipUnit;
+            label: {
+                precision: 2
+            },
+            z: 0
+        },
+        formatter: function (result) {
+            let returnVal = result[0].name;
+            for (let i = 0; i < result.length; i++) {
+                if(result[i].seriesName === ''){
+                    returnVal += `<br>${result[i].value}${opts.tooltipUnit}`;
+                }else{
+                    returnVal += `<br>${result[i].marker}${result[i].seriesName}：${result[i].value}${opts.tooltipUnit}`;
                 }
-                return returnVal;
             }
-        }, tooltipStyle);
+            return returnVal;
+        }
+    }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {
@@ -135,11 +135,11 @@ export default function (data, chartID, options) {
                 lineHeight: opts.xAxisFontSize,
                 fontSize: opts.xAxisFontSize,
                 formatter: function (value) {
-                    var str = '',
+                    let str = '',
                         maxLength = opts.xAxisMaxCharNum,
                         rowNum = Math.ceil(value.length / maxLength);
-                    for (var i = 0; i < rowNum; i++) {
-                        var part = value.slice(i * maxLength, (i + 1) * maxLength);
+                    for (let i = 0; i < rowNum; i++) {
+                        let part = value.slice(i * maxLength, (i + 1) * maxLength);
                         rowNum - 1 > 0 && (part += '\n');
                         str += part;
                     }

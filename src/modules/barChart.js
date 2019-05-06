@@ -3,7 +3,7 @@ import tooltipStyle from '../config/tooltipStyle'
 
 //条形图
 export default function (data, chartID, options) {
-    var defaultOpts = {
+    const defaultOpts = {
         gridLeft: 30,                   //图表距离容器左边界距离
         gridTop: 30,                    //上
         gridRight: 30,                  //右
@@ -13,19 +13,17 @@ export default function (data, chartID, options) {
         yAxisFontSize: 12,              //Y轴字体大小
         yAxisFilter: '',                //Y轴过滤文字
         clickFn: null                   //点击事件
-    };
-    var opts = Object.assign(defaultOpts, options);
-    var names = [],
-        nums = [];
-    for (var i = 0; i < data[0].length; i++) {
+    }, opts = Object.assign(defaultOpts, options);
+    let [names, nums] = [[], []];
+    for (let i = 0; i < data[0].length; i++) {
         names.push(data[0][data[0].length - 1 - i].departmentName.replace(opts.yAxisFilter, ''));
         nums.push(data[0][data[0].length - 1 - i].actualTarget);
     }
-    var chart = echarts.init(document.getElementById(chartID), 'customed'),
-        tooltip = Object.assign({
-            trigger: 'item',
-            formatter: '{b0}<br>{c0}' + opts.tooltipUnit,
-        }, tooltipStyle);
+    let chart = echarts.init(document.getElementById(chartID), 'customed');
+    const tooltip = Object.assign({
+        trigger: 'item',
+        formatter: `{b0}<br>{c0}${opts.tooltipUnit}`,
+    }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {
@@ -59,7 +57,7 @@ export default function (data, chartID, options) {
                     color: '#000',
                     fontSize: 13
                 },
-                formatter: '{c}' + opts.yAxisUnit
+                formatter: `{c}${opts.yAxisUnit}`
             },
             itemStyle: {
                 color: new echarts.graphic.LinearGradient(0, 0, 0.5, 1, [{

@@ -4,7 +4,7 @@ import tooltipStyle from '../config/tooltipStyle'
 
 //简单环形图
 export default function (data, chartID, options) {
-    var defaultOpts = {
+    const defaultOpts = {
         centerPosition: ['50%', '50%'],  //饼图圆心位置，数组的元素分别对应离容器左侧和顶部的距离
         radiusScale: ['50%', '70%'],     //饼图半径，对应内圈和外圈的大小
         textPosition: ['49%', '44%'],   //标题离容器左侧和顶部的距离
@@ -14,31 +14,30 @@ export default function (data, chartID, options) {
         subtextFontSize: 12,            //副标题字体大小
         tooltipText: ['', ''],          //提示框对应有色区域和灰色区域的文本
         clickFn: null                   //点击事件
-    };
-    var result;
+    }, opts = Object.assign(defaultOpts, options);
+    let result;
     if (data.length === 1) {
         result = parseFloat(data[0][0].actualTarget);
     } else {
-        var one = data[0][0].actualTarget,
+        let one = data[0][0].actualTarget,
             all = data[1][0].actualTarget;
         result = one / all * 100;
     }
-    var opts = Object.assign(defaultOpts, options);
-    var chart = echarts.init(document.getElementById(chartID), 'customed'),
-        tooltip = Object.assign({
-            trigger: 'item',
-            formatter: function (result) {
-                if (result.dataIndex === 0) {
-                    return opts.tooltipText[0];
-                } else {
-                    return opts.tooltipText[1];
-                }
+    let chart = echarts.init(document.getElementById(chartID), 'customed');
+    const tooltip = Object.assign({
+        trigger: 'item',
+        formatter: function (result) {
+            if (result.dataIndex === 0) {
+                return opts.tooltipText[0];
+            } else {
+                return opts.tooltipText[1];
             }
-        }, tooltipStyle);
+        }
+    }, tooltipStyle);
     chart.setOption({
         title: {
             text: opts.text,
-            subtext: toFixed(result, 2) + '%',
+            subtext: `${toFixed(result, 2)}%`,
             left: opts.textPosition[0],
             top: opts.textPosition[1],
             itemGap: 0,

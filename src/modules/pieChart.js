@@ -3,27 +3,26 @@ import tooltipStyle from '../config/tooltipStyle'
 
 //环形图
 export default function (data, chartID, options){ // data--数据，chartID--放置图表的元素id，options包含了下列参数
-    var defaultOpts = {
-        centerPosition: ['30%','50%'],      //饼图圆心离容器左侧和顶部的距离
-        radiusScale: ['50%','70%'],         //饼图半径，对应内圈和外圈的大小
+    let defaultOpts = {
+        centerPosition: ['30%', '50%'],      //饼图圆心离容器左侧和顶部的距离
+        radiusScale: ['50%', '70%'],         //饼图半径，对应内圈和外圈的大小
         textPosition: ['29%', '44%'],       //标题离容器左侧和顶部的距离
         text: ['', ''],                     //标题和副标题文本
         color: '#333',                      //标题文字颜色
         fontSize: 12,                       //标题字体大小
         subtextFontSize: 12,                //副标题字体大小
-        legendPosition: ['50%','25%'],      //图例离容器左侧和顶部的距离
+        legendPosition: ['50%', '25%'],      //图例离容器左侧和顶部的距离
         legendMaxRowNum: 5,                 //图例每列最多个数
         legendFontSize: 12,                 //图例字体大小
         tooltipConfine: false,              //是否将提示框限制在图表区域内
         tooltipUnit: '',                    //提示框单位
         clickFn: null                       //点击事件
-    };
-    var opts = Object.assign(defaultOpts, options);
-    var names = [],
+    }, opts = Object.assign(defaultOpts, options);
+    let names = [],
         nums = [],
         length = data.length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data.length,
         height = 15 * length + 10 * (length - 1);
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         names.push({
             name: data[i].targetItem,
             icon: 'circle' //图例图标类型
@@ -33,23 +32,23 @@ export default function (data, chartID, options){ // data--数据，chartID--放
             value: data[i].actualTarget
         });
     }
-    var chart = echarts.init(document.getElementById(chartID), 'customed'),
-        tooltip = Object.assign({
-            trigger: 'item',
-            confine: opts.tooltipConfine,
-            formatter: function (result){
-                var unit = opts.tooltipUnit;
-                if(parseInt(result.value).toString().length > 4){
-                    result.value = (parseFloat(result.value) / 10000).toFixed(2);
-                    if(opts.tooltipUnit.indexOf('万') > -1){
-                        unit = unit.replace('万','亿');
-                    }else{
-                        unit = '万' + unit;
-                    }
+    let chart = echarts.init(document.getElementById(chartID), 'customed');
+    const tooltip = Object.assign({
+        trigger: 'item',
+        confine: opts.tooltipConfine,
+        formatter: function (result){
+            let unit = opts.tooltipUnit;
+            if(parseInt(result.value).toString().length > 4){
+                result.value = (parseFloat(result.value) / 10000).toFixed(2);
+                if(opts.tooltipUnit.indexOf('万') > -1){
+                    unit = unit.replace('万','亿');
+                }else{
+                    unit = `万${unit}`;
                 }
-                return result.name + '<br>' + result.value + unit + ' (' + result.percent + '%)';
             }
-        }, tooltipStyle);
+            return `${result.name}<br>${result.value}${unit} (${result.percent}%)`;
+        }
+    }, tooltipStyle);
     chart.setOption({
         title: {
             text: opts.text[0],

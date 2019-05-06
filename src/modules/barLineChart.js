@@ -3,13 +3,13 @@ import tooltipStyle from '../config/tooltipStyle'
 
 //柱状单折线图
 export default function (data, chartID, options){
-    var defaultOpts = {
+    const defaultOpts = {
         gridLeft: 30,                   //图表距离容器左边界距离
         gridTop: 60,                    //上
         gridRight: 30,                  //右
         gridBottom: 30,                 //下
         legendTop: 10,                  //图例距离容器上边界距离
-        legendName: ['',''],            //图例名称
+        legendName: ['', ''],            //图例名称
         tooltipUnit: '',                //提示框单位
         xAxisFontSize: 12,              //X轴字体大小
         xAxisMaxCharNum: 2,             //X轴每行文字最大个数
@@ -17,13 +17,9 @@ export default function (data, chartID, options){
         yAxisUnit: '',                  //Y轴单位
         dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
         clickFn: null,                  //点击事件
-    };
-    var opts = Object.assign(defaultOpts, options);
-    var xAxisNames = [],
-        seriesData1 = [],
-        seriesData2 = [],
-        series = [];
-    for(var i = 0; i < data.length; i++){
+    }, opts = Object.assign(defaultOpts, options);
+    let [xAxisNames, seriesData1, seriesData2, series] = [[], [], [], []];
+    for(let i = 0; i < data.length; i++){
         xAxisNames.push(data[i].departmentName.replace(opts.xAxisFilter,''));
         seriesData1.push(data[i].shouldTarget);
         seriesData2.push(data[i].actualTarget);
@@ -51,30 +47,34 @@ export default function (data, chartID, options){
             }])
         }
     });
-    var chart = echarts.init(document.getElementById(chartID), 'customed'),
-        tooltip = Object.assign({
-            trigger: 'axis',
-            axisPointer: {
-                type: 'line',
-                lineStyle: {
-                    color: '#ccc',
-                    width: 1
-                },
-                label: {
-                    precision: 2
-                },
-                z: 0
+    let chart = echarts.init(document.getElementById(chartID), 'customed');
+    const tooltip = Object.assign({
+        trigger: 'axis',
+        axisPointer: {
+            type: 'line',
+            lineStyle: {
+                color: '#ccc',
+                width: 1
             },
-            formatter: function (result){
-                var returnVal = result[0].name;
-                for(var i = 0; i < result.length; i++){
-                    var color = result[i].color.colorStops? result[i].color.colorStops[0].color : result[i].color,
-                        marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:' + color + ';"></span>';
-                    returnVal += '<br>' + marker + result[i].seriesName + '：' + result[i].value + opts.tooltipUnit;
+            label: {
+                precision: 2
+            },
+            z: 0
+        },
+        formatter: function (result){
+            let returnVal = result[0].name;
+            for(let i = 0; i < result.length; i++){
+                let color = result[i].color.colorStops? result[i].color.colorStops[0].color : result[i].color,
+                    marker = `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color};"></span>`;
+                if(result[i].seriesName === ''){
+                    returnVal += `<br>${result[i].value}${opts.tooltipUnit}`;
+                }else{
+                    returnVal += `<br>${marker}${result[i].seriesName}：${result[i].value}${opts.tooltipUnit}`;
                 }
-                return returnVal;
             }
-        }, tooltipStyle);
+            return returnVal;
+        }
+    }, tooltipStyle);
     chart.setOption({
         tooltip: tooltip,
         grid: {
@@ -94,11 +94,11 @@ export default function (data, chartID, options){
                 lineHeight: opts.xAxisFontSize,
                 fontSize: opts.xAxisFontSize,
                 formatter: function (value){
-                    var str = '',
+                    let str = '',
                         maxLength = opts.xAxisMaxCharNum,
                         rowNum = Math.ceil(value.length / maxLength);
-                    for(var i = 0; i < rowNum; i++) {
-                        var part = value.slice(i * maxLength, (i + 1) * maxLength);
+                    for(let i = 0; i < rowNum; i++) {
+                        let part = value.slice(i * maxLength, (i + 1) * maxLength);
                         rowNum - 1 > 0 && (part += '\n');
                         str += part;
                     }
