@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>NewSee - Charts project</h1>
+  <h1>NewSee - Charts</h1>
   <img width="600" src="https://github.com/Newsee-Frontend/ns-charts/blob/master/md/charts-pc.png?raw=true">
 </div>
 
