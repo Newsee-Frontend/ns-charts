@@ -1,6 +1,6 @@
 <p align="center">
   <h1>NewSee - Charts project</h1>
-  <img width="480" src="http://otaflb4oo.bkt.clouddn.com/CX-UI-Design/Logo/CX-Grid-logo.png">
+  <img width="480" src="https://github.com/Newsee-Frontend/ns-charts/blob/master/md/charts-pc.png?raw=true">
 </p>
 
 > This project base on echarts，used to newsee V8 /  V9 / V10，support SPA / MPA peoject.
