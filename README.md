@@ -5,7 +5,7 @@
 
 > This project base on echarts，used to newsee V8 /  V9 / V10，support SPA / MPA peoject.
 
-### Frist  Setup
+### Frist  Setup :one:
 ####  install dependencies
 ``` bash
 npm install | yarn
