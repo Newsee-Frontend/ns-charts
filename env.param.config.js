@@ -25,7 +25,16 @@ module.exports = {
         assetsPublicPath: "./",
         assetsRoot: path.resolve("./lib"),
         assetsSubDirectory: "static",
-        staticPath: "./static"
+        staticPath: "./static",
+
+        externals: {
+            echarts: {
+                root: 'echarts',
+                commonjs: 'echarts',
+                commonjs2: 'echarts',
+                amd: 'echarts'
+            }
+        },
     },
     base: {
         mockPath: './docs/SPA/mock',
