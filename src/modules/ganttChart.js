@@ -11,7 +11,8 @@ export default function (data, chartID, options){
         scale: 3,          //占据刻度,
         xAxisFontSize: 12, //X轴字体大小
         clickFn: null      //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let [yAxisNames, assistData, series] = [[], [], []];
     const [year, month] = [data[0].date.slice(0,4), data[0].date.slice(4)];
     for(let i = 0; i < data.length; i++) {

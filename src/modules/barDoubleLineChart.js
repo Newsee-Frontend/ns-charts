@@ -19,7 +19,8 @@ export default function (data, chartID, options){
         dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
         showPlan: false,                //是否显示计划。注：当值为true时，确保包含数据的数组个数为1
         clickFn: null                   //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let [xAxisNames, seriesData1, seriesData2, seriesData3, series] = [[], [], [], [], []];
     for(let i = 0; i < data[0].length; i++){
         xAxisNames.push(data[0][i].departmentName.replace(opts.xAxisFilter,''));

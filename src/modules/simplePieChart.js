@@ -14,7 +14,8 @@ export default function (data, chartID, options) {
         subtextFontSize: 12,            //副标题字体大小
         tooltipText: ['', ''],          //提示框对应有色区域和灰色区域的文本
         clickFn: null                   //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let result;
     if (data.length === 1) {
         result = parseFloat(data[0][0].actualTarget);

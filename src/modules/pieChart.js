@@ -17,7 +17,8 @@ export default function (data, chartID, options){ // data--数据，chartID--放
         tooltipConfine: false,              //是否将提示框限制在图表区域内
         tooltipUnit: '',                    //提示框单位
         clickFn: null                       //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let names = [],
         nums = [],
         length = data.length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data.length,

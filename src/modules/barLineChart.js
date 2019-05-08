@@ -17,7 +17,8 @@ export default function (data, chartID, options){
         yAxisUnit: '',                  //Y轴单位
         dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
         clickFn: null,                  //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let [xAxisNames, seriesData1, seriesData2, series] = [[], [], [], []];
     for(let i = 0; i < data.length; i++){
         xAxisNames.push(data[i].departmentName.replace(opts.xAxisFilter,''));
