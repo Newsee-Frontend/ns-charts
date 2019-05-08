@@ -13,7 +13,8 @@ export default function (data, chartID, options){
         labelLineLength2: 10,           //引导线第二段长度
         tooltipUnit: '',                //提示框单位
         clickFn: null                   //点击事件
-    }, opts = Object.assign(defaultOpts, options);
+    };
+    const opts = Object.assign(defaultOpts, options);
     let names = [],
         nums = [],
         length = data.length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data.length,
