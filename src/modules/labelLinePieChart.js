@@ -13,20 +13,19 @@ export default function (data, chartID, options){
         labelLineLength2: 10,           //引导线第二段长度
         tooltipUnit: '',                //提示框单位
         clickFn: null                   //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+    }, opts = Object.assign(defaultOpts, options);
     let names = [],
         nums = [],
-        length = data.length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data.length,
+        length = data[0].length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data[0].length,
         height = 15 * length + 10 * (length - 1);
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data[0].length; i++) {
         names.push({
-            name: data[i].targetItem,
+            name: data[0][i].targetItem,
             icon: 'circle'
         });
         nums.push({
-            value: data[i].actualTarget,
-            name: data[i].targetItem
+            value: data[0][i].actualTarget,
+            name: data[0][i].targetItem
         });
     }
     let chart = echarts.init(document.getElementById(chartID), 'customed');
@@ -75,5 +74,5 @@ export default function (data, chartID, options){
             }
         }]
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

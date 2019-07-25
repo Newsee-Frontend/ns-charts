@@ -17,11 +17,11 @@ export default function (data, chartID, options){
         xAxisFilter: '',                //X轴过滤文字
         yAxisUnit: '',                  //Y轴单位
         yAxisSplitNum: 5,               //Y轴分割线个数
-        dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
+        labelShow: false,               //柱条文本是否显示
+        dataZoomStyle: [0, 100, true, false], //图表和dataZoom组件的开始位置，结束位置，是否禁用dataZoom组件以及是否显示组件
         showPlan: false,                //是否显示计划。注：当值为true时，确保包含数据的数组个数为1
         clickFn: null                   //点击事件
-    },
-      opts = Object.assign(defaultOpts, options);
+    }, opts = Object.assign(defaultOpts, options);
     let [xAxisNames, series] = [[], []];
     if(opts.showPlan){
         if(data.length > 1) throw('当设置showPlan的值为true时，数组长度不能大于1');
@@ -37,7 +37,11 @@ export default function (data, chartID, options){
             data: seriesData1,
             itemStyle: colorList[0],
             barMaxWidth: 20,
-            barCategoryGap: '30%' //柱间距离
+            barCategoryGap: '30%', //柱间距离
+            label: {
+                show: opts.labelShow,
+                position: 'top'
+            }
         });
         series.push({
             type: 'bar',
@@ -127,16 +131,17 @@ export default function (data, chartID, options){
             xAxisIndex: 0,
             start: opts.dataZoomStyle[0],
             end: opts.dataZoomStyle[1],
+            disabled: opts.dataZoomStyle[2],
             zoomOnMouseWheel: false //鼠标滚轮不能触发缩放
         }, {
             type: 'slider', //dataZoom组件内拖动
             xAxisIndex: 0,
             start: opts.dataZoomStyle[0],
             end: opts.dataZoomStyle[1],
-            show: opts.dataZoomStyle[2],
+            show: opts.dataZoomStyle[3],
             zoomLock: true //是否锁定选择区域
         }],
         series: series
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

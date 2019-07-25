@@ -13,19 +13,16 @@ export default function (data, chartID, options) {
         fontSize: 12,                   //标题字体大小
         subtextFontSize: 12,            //副标题字体大小
         tooltipText: ['', ''],          //提示框对应有色区域和灰色区域的文本
-        devidePlan: false,        //是否除以计划。注：当值为true时，确保包含数据的数组个数为1，且数组中对象的shouldTarget属性值有效。
-        clickFn: null                   //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+        clickFn: null,                  //点击事件
+        devidePlan: false               //是否除以目标值。注：当值为true时，确保存在有效的目标值
+    }, opts = Object.assign(defaultOpts, options);
     let result;
-    if(data.length === 1){
-        if(opts.devidePlan){
-            result = data[0][0].actualTarget / data[0][0].shouldTarget * 100;
-        }else{
-            result = parseFloat(data[0][0].actualTarget);
-        }
-    }else{
-        result = data[0][0].actualTarget / data[1][0].actualTarget * 100;
+    if (data.length === 1) {
+            result = opts.devidePlan ? data[0][0].actualTarget / data[0][0].shouldTarget * 100 : parseFloat(data[0][0].actualTarget);
+    } else {
+        let one = data[0][0].actualTarget,
+            all = data[1][0].actualTarget;
+        result = one / all * 100;
     }
     let chart = echarts.init(document.getElementById(chartID), 'customed');
     const tooltip = Object.assign({
@@ -92,5 +89,5 @@ export default function (data, chartID, options) {
             }
         }]
     });
-    opts.clickFn && (chart.on('click', opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

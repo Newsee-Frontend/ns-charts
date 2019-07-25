@@ -13,8 +13,7 @@ export default function (data, chartID, options) {
         yAxisFontSize: 12,              //Y轴字体大小
         yAxisFilter: '',                //Y轴过滤文字
         clickFn: null                   //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+    }, opts = Object.assign(defaultOpts, options);
     let [names, nums] = [[], []];
     for (let i = 0; i < data[0].length; i++) {
         names.push(data[0][data[0].length - 1 - i].departmentName.replace(opts.yAxisFilter, ''));
@@ -72,4 +71,5 @@ export default function (data, chartID, options) {
             }
         }]
     });
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

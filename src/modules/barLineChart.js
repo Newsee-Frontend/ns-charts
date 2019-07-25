@@ -9,21 +9,21 @@ export default function (data, chartID, options){
         gridRight: 30,                  //右
         gridBottom: 30,                 //下
         legendTop: 10,                  //图例距离容器上边界距离
-        legendName: ['', ''],            //图例名称
+        legendName: ['', ''],           //图例名称
         tooltipUnit: '',                //提示框单位
         xAxisFontSize: 12,              //X轴字体大小
         xAxisMaxCharNum: 2,             //X轴每行文字最大个数
         xAxisFilter: '',                //X轴过滤文字
         yAxisUnit: '',                  //Y轴单位
-        dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置以及是否显示dataZoom组件
-        clickFn: null,                  //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+        yAxisSplitNum: 5,               //Y轴分割线个数
+        dataZoomStyle: [0, 100, true, false], //图表和dataZoom组件的开始位置，结束位置，是否禁用dataZoom组件以及是否显示组件
+        clickFn: null                   //点击事件
+    }, opts = Object.assign(defaultOpts, options);
     let [xAxisNames, seriesData1, seriesData2, series] = [[], [], [], []];
-    for(let i = 0; i < data.length; i++){
-        xAxisNames.push(data[i].departmentName.replace(opts.xAxisFilter,''));
-        seriesData1.push(data[i].shouldTarget);
-        seriesData2.push(data[i].actualTarget);
+    for(let i = 0; i < data[0].length; i++){
+        xAxisNames.push(data[0][i].departmentName.replace(opts.xAxisFilter,''));
+        seriesData1.push(data[0][i].shouldTarget);
+        seriesData2.push(data[0][i].actualTarget);
     }
     series.push({
         type: 'line',
@@ -121,16 +121,17 @@ export default function (data, chartID, options){
             xAxisIndex: 0,
             start: opts.dataZoomStyle[0],
             end: opts.dataZoomStyle[1],
+            disabled: opts.dataZoomStyle[2],
             zoomOnMouseWheel: false
         }, {
             type: 'slider',
             xAxisIndex: 0,
             start: opts.dataZoomStyle[0],
             end: opts.dataZoomStyle[1],
-            show: opts.dataZoomStyle[2],
+            show: opts.dataZoomStyle[3],
             zoomLock: true
         }],
         series: series
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

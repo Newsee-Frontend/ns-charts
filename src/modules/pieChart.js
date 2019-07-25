@@ -14,23 +14,23 @@ export default function (data, chartID, options){ // data--数据，chartID--放
         legendPosition: ['50%', '25%'],      //图例离容器左侧和顶部的距离
         legendMaxRowNum: 5,                 //图例每列最多个数
         legendFontSize: 12,                 //图例字体大小
+        legendMaxCharNum: 20,               //图例文字最大个数
         tooltipConfine: false,              //是否将提示框限制在图表区域内
         tooltipUnit: '',                    //提示框单位
         clickFn: null                       //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+    }, opts = Object.assign(defaultOpts, options);
     let names = [],
         nums = [],
-        length = data.length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data.length,
+        length = data[0].length >= opts.legendMaxRowNum? opts.legendMaxRowNum : data[0].length,
         height = 15 * length + 10 * (length - 1);
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data[0].length; i++) {
         names.push({
-            name: data[i].targetItem,
+            name: data[0][i].targetItem,
             icon: 'circle' //图例图标类型
         });
         nums.push({
-            name: data[i].targetItem,
-            value: data[i].actualTarget
+            name: data[0][i].targetItem,
+            value: data[0][i].actualTarget
         });
     }
     let chart = echarts.init(document.getElementById(chartID), 'customed');
@@ -83,6 +83,12 @@ export default function (data, chartID, options){ // data--数据，chartID--放
             textStyle: {
                 lineHeight: 15, //行高最小为15px
                 fontSize: opts.legendFontSize
+            },
+            formatter: function (value){
+                if(value.length > opts.legendMaxCharNum){
+                    value = value.slice(0, opts.legendMaxCharNum - 1) + '…';  
+                }
+                return value;
             }
         },
         series: [{
@@ -96,5 +102,5 @@ export default function (data, chartID, options){ // data--数据，chartID--放
             }
         }]
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };

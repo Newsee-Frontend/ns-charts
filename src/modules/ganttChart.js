@@ -11,21 +11,20 @@ export default function (data, chartID, options){
         scale: 3,          //占据刻度,
         xAxisFontSize: 12, //X轴字体大小
         clickFn: null      //点击事件
-    };
-    const opts = Object.assign(defaultOpts, options);
+    }, opts = Object.assign(defaultOpts, options);
     let [yAxisNames, assistData, series] = [[], [], []];
-    const [year, month] = [data[0].date.slice(0,4), data[0].date.slice(4)];
-    for(let i = 0; i < data.length; i++) {
-        yAxisNames.push(data[i].actualTarget);
+    const [year, month] = [data[0][0].date.slice(0,4), data[0][0].date.slice(4)];
+    for(let i = 0; i < data[0].length; i++) {
+        yAxisNames.push(data[0][i].actualTarget);
         assistData.push(i * opts.scale);
         let seriesData = [];
-        for(let j = 0; j < data.length; j++) {
+        for(let j = 0; j < data[0].length; j++) {
             seriesData[j] = 0;
         }
         seriesData[i] = opts.scale * 1;
         series.push({
             type: 'bar',
-            name: data[i].actualTarget,
+            name: data[0][i].actualTarget,
             data: seriesData,
             barMaxWidth: 24,
             stack: '1',
@@ -114,5 +113,5 @@ export default function (data, chartID, options){
         }],
         series: series
     });
-    opts.clickFn && (chart.on('click',opts.clickFn));
+    opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
 };
