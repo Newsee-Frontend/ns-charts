@@ -76,7 +76,8 @@
                 xAxisMaxCharNum: 3,
                 xAxisFilter: '城市公司',
                 yAxisSplitNum: 2,
-                dataZoomStyle: [0, 50, false]
+                dataZoomStyle: [0, 50, true, false],
+				labelShow: true
             });
         });
         //柱状图(含计划)
@@ -88,7 +89,8 @@
                 gridBottom: -10,
                 tooltipUnit: '万元',
                 legendName: ['计划', '实际'],
-                dataZoomStyle: [0, 50, false],
+				labelShow: true,
+                dataZoomStyle: [0, 50, true, false],
                 showPlan: true
             });
         });
