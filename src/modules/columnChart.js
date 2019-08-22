@@ -23,6 +23,9 @@ export default function (data, chartID, options){
         clickFn: null                   //点击事件
     }, opts = Object.assign(defaultOpts, options);
     let [xAxisNames, series] = [[], []];
+    for(let i = 0; i < colorList.length; i++) {
+        colorList[i].normal.label.show = opts.labelShow;
+    }
     if(opts.showPlan){
         if(data.length > 1) throw('当设置showPlan的值为true时，数组长度不能大于1');
         let [seriesData1, seriesData2] = [[], []];
@@ -37,11 +40,7 @@ export default function (data, chartID, options){
             data: seriesData1,
             itemStyle: colorList[0],
             barMaxWidth: 20,
-            barCategoryGap: '30%', //柱间距离
-            label: {
-                show: opts.labelShow,
-                position: 'top'
-            }
+            barCategoryGap: '30%' //柱间距离
         });
         series.push({
             type: 'bar',
