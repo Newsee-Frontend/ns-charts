@@ -11,12 +11,14 @@ export default function (data, chartID, options){ // data--数据，chartID--放
         color: '#333',                      //标题文字颜色
         fontSize: 12,                       //标题字体大小
         subtextFontSize: 12,                //副标题字体大小
-        legendPosition: ['50%', '25%'],      //图例离容器左侧和顶部的距离
+        legendPosition: ['50%', '25%'],     //图例离容器左侧和顶部的距离
         legendMaxRowNum: 5,                 //图例每列最多个数
         legendFontSize: 12,                 //图例字体大小
         legendMaxCharNum: 20,               //图例文字最大个数
         tooltipConfine: false,              //是否将提示框限制在图表区域内
         tooltipUnit: '',                    //提示框单位
+        tooltipExtra: '',                   //提示框额外数据
+        tooltipExtraUnit: '',               //提示框额外数据单位
         clickFn: null                       //点击事件
     }, opts = Object.assign(defaultOpts, options);
     let names = [],
@@ -47,7 +49,11 @@ export default function (data, chartID, options){ // data--数据，chartID--放
                     unit = `万${unit}`;
                 }
             }
-            return `${result.name}<br>${result.value}${unit} (${result.percent}%)`;
+            if(opts.tooltipExtra){
+				return `${result.name}<br>${result.value}${unit} (${result.percent}%)`;
+			}else{
+				return `${result.name}<br>${data[0][result.dataIndex][opts.tooltipExtra]}${opts.tooltipExtraUnit} ${result.value}${unit} (${result.percent}%)`;
+			}
         }
     }, tooltipStyle);
     chart.setOption({
