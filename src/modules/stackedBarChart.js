@@ -17,10 +17,29 @@ export default function (data, chartID, options) {
         xAxisFilter: '',                //X轴过滤文字
         yAxisUnit: '',                  //Y轴单位
         yAxisSplitNum: 5,               //Y轴分割线个数
+        labelShow: false,               //柱条文本是否显示
         dataZoomStyle: [0, 100, true, false], //图表和dataZoom组件的开始位置，结束位置，是否禁用dataZoom组件以及是否显示组件
         clickFn: null,                  //点击事件
     }, opts = Object.assign(defaultOpts, options);
     let [xAxisNames, seriesData, series, sumName, sumData] = [[], [], [], opts.legendName[0], {}];
+    const legendName = opts.legendName;
+    for(let i = 0; i < colorList.length; i++){
+        if(opts.labelShow){
+            colorList[i].normal.label.show = i === legendName.length - 2 ? true : false;
+            colorList[i].normal.label.formatter = function(result){
+                let retval = '',
+                    dataIndex = result.dataIndex;
+                legendName.forEach((obj, index) => {
+                    if(index === legendName.length - 1){
+                        retval += legendName[index] + '：' + data[index][dataIndex].actualTarget;
+                    }else{
+                        retval += legendName[index] + '：' + data[index][dataIndex].actualTarget + '\n';
+                    }
+                });
+                return retval;
+            }
+        }
+    }
     opts.legendName.shift();
     for (let i = 0; i < data.length; i++) {
         seriesData.push([]);
@@ -128,4 +147,9 @@ export default function (data, chartID, options) {
         series: series
     });
     opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
+    chart.on('legendselectchanged', obj => {
+        let selected = obj.selected;
+        series[0].itemStyle.normal.label.show = selected[legendName[1]] && !selected[legendName[2]] ? true : false;
+        chart.setOption({series: series});
+    });
 };

@@ -25,6 +25,7 @@ export default function (data, chartID, options){
     let [xAxisNames, series] = [[], []];
     for(let i = 0; i < colorList.length; i++) {
         colorList[i].normal.label.show = opts.labelShow;
+        delete colorList[i].normal.label.formatter;
     }
     if(opts.showPlan){
         if(data.length > 1) throw('当设置showPlan的值为true时，数组长度不能大于1');

@@ -7,15 +7,15 @@ export default [
             label:{
                 show: false,
                 position: 'top',
-                distance: 0,
-                color: '#333'
+                distance: 3,
+                color: '#333',
+                lineHeight: 15
             },
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1,
-                [
-                    //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                    {offset: 0, color: '#1595ff'},
-                    {offset: 1, color: '#8c53ca'}
-                ])
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                {offset: 0, color: '#1595ff'},
+                {offset: 1, color: '#8c53ca'}
+            ])
         }
     },
     {
@@ -23,8 +23,9 @@ export default [
             label:{
                 show: false,
                 position: 'top',
-                distance: 0,
-                color: '#333'
+                distance: 3,
+                color: '#333',
+                lineHeight: 15
             },
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 {offset: 0, color: '#ffa87a'},
@@ -37,8 +38,9 @@ export default [
             label:{
                 show: false,
                 position: 'top',
-                distance: 0,
-                color: '#333'
+                distance: 3,
+                color: '#333',
+                lineHeight: 15
             },
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 {offset: 0, color: '#a5ec27'},
@@ -51,8 +53,9 @@ export default [
             label:{
                 show: false,
                 position: 'top',
-                distance: 0,
-                color: '#333'
+                distance: 3,
+                color: '#333',
+                lineHeight: 15
             },
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 {offset: 0, color: '#11d6cb'},
