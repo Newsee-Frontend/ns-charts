@@ -11,7 +11,7 @@
 <body>
 <div id="test1" class="charts-blcok"></div>
 <div id="test2" class="charts-blcok"></div>
-<div id="test3" style="width: 500px;" class="charts-blcok"></div>
+<div id="test3" class="charts-blcok" style="width: 500px;"></div>
 <div id="test4" class="charts-blcok"></div>
 <div id="test5" class="charts-blcok"></div>
 <div id="test6" class="charts-blcok"></div>
@@ -95,14 +95,15 @@
             });
         });
         //堆叠柱状图
-        $.get(baseUrl + 'bar.stacked.json', function (data) {
+        $.get(baseUrl + 'bar.stacked2.json', function (data) {
             nsCharts.stackedBarChart(data, 'test6', {
                 gridLeft: 10,
                 gridTop: 50,
                 gridRight: 30,
                 gridBottom: -10,
                 tooltipUnit: '万元',
-                legendName: ['总营收', '本年营收', '往年营收']
+                legendName: ['总营收', '本年营收', '去年营收', '去年前营收'],
+                labelShow: true
             });
         });
         //条形图

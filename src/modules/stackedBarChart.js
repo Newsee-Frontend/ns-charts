@@ -38,6 +38,8 @@ export default function (data, chartID, options) {
                 });
                 return retval;
             }
+        }else{
+            colorList[i].normal.label.show = false;
         }
     }
     opts.legendName.shift();
@@ -149,7 +151,12 @@ export default function (data, chartID, options) {
     opts.clickFn && (chart.on('click', (result)=>{ opts.clickFn(result,data); }));
     chart.on('legendselectchanged', obj => {
         let selected = obj.selected;
-        series[0].itemStyle.normal.label.show = selected[legendName[1]] && !selected[legendName[2]] ? true : false;
+        if(legendName.length === 3){
+            series[0].itemStyle.normal.label.show = selected[legendName[1]] && !selected[legendName[2]] ? true : false; //底层柱体显示条件
+        }else if(legendName.length === 4){
+            series[0].itemStyle.normal.label.show = selected[legendName[1]] && !selected[legendName[2]] && !selected[legendName[3]] ? true : false;
+            series[1].itemStyle.normal.label.show = selected[legendName[2]] && !selected[legendName[3]] ? true : false;
+        }
         chart.setOption({series: series});
     });
 };
