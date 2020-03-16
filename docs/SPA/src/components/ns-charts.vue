@@ -25,7 +25,7 @@
         created() {
             console.log('ns-charts 模块导入：');
             console.log(nsCharts);
-            this.list = [...Array(10).keys()];
+            this.list = [...Array(11).keys()];
         },
         mounted() {
             //环形图
