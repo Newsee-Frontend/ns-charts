@@ -12,8 +12,16 @@ export default function (data, chartID, options) {
         yAxisUnit: '',                  //Y轴单位
         yAxisFontSize: 12,              //Y轴字体大小
         yAxisFilter: '',                //Y轴过滤文字
-        clickFn: null                   //点击事件
+        clickFn: null,                  //点击事件
+        keyRef: {},
     }, opts = Object.assign(defaultOpts, options);
+    if (Object.keys(opts.keyRef).length) {
+      data[0].forEach(i => {
+        Object.keys(opts.keyRef).forEach(key => {
+          i[key] = i[opts.keyRef[key]];
+        });
+      });
+    }
     let [names, nums] = [[], []];
     for (let i = 0; i < data[0].length; i++) {
         names.push(data[0][data[0].length - 1 - i].departmentName.replace(opts.yAxisFilter, ''));
