@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Newsee-Frontend/ns-charts#readme",
   "dependencies": {
     "echarts": "^4.2.1",
-    "jquery": "1.11.2",
+    "jquery": "3.5.0",
     "vue": "2.5.21"
   },
   "devDependencies": {
