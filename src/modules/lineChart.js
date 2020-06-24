@@ -16,6 +16,7 @@ export default function (data, chartID, options) {
         xAxisFilter: '',                //X轴过滤文字
         yAxisUnit: '',                  //Y轴单位
         yAxisSplitNum: 5,               //Y轴分割线个数
+        labelShow: false,               //折线文本是否显示
         dataZoomStyle: [0, 100, true, false], //图表和dataZoom组件的开始位置，结束位置，是否禁用dataZoom组件以及是否显示组件
         clickFn: null                   //点击事件
     }, opts = Object.assign(defaultOpts, options);
@@ -86,7 +87,14 @@ export default function (data, chartID, options) {
             name: opts.legendName[i],
             data: seriesData[i],
             itemStyle: colorList[i],
-            areaStyle: colorLinearList[i]
+            areaStyle: colorLinearList[i],
+            label:{
+                show: opts.labelShow,
+                position: 'top',
+                distance: 3,
+                color: '#333',
+                lineHeight: 15
+            }
         });
     }
     let chart = echarts.init(document.getElementById(chartID), 'customed');

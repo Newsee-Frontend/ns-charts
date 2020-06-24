@@ -14,7 +14,8 @@ export default function (data, chartID, options) {
         subtextFontSize: 12,            //副标题字体大小
         tooltipText: ['', ''],          //提示框对应有色区域和灰色区域的文本
         clickFn: null,                  //点击事件
-        devidePlan: false               //是否除以目标值。注：当值为true时，确保存在有效的目标值
+        devidePlan: false,              //是否除以目标值。注：当值为true时，确保存在有效的目标值
+        bgColor: '#000'                 //背景色
     }, opts = Object.assign(defaultOpts, options);
     let result;
     if (data.length === 1) {
@@ -80,7 +81,7 @@ export default function (data, chartID, options) {
                 name: '',
                 value: 100 - result,
                 itemStyle: {
-                    color: '#000',
+                    color: opts.bgColor,
                     opacity: 0.5
                 }
             }],

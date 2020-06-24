@@ -1,5 +1,5 @@
 import echarts from 'echarts'
-import colorList from '../config/colorList'
+import colorList from '../config/colorList2'
 import tooltipStyle from '../config/tooltipStyle'
 
 //柱状图
@@ -33,10 +33,6 @@ export default function(data, chartID, options) {
     });
   }
   let [xAxisNames, series] = [[], []];
-  for (let i = 0; i < colorList.length; i++) {
-    colorList[i].normal.label.show = opts.labelShow;
-    delete colorList[i].normal.label.formatter;
-  }
   if (opts.showPlan) {
     if (data.length > 1) throw '当设置showPlan的值为true时，数组长度不能大于1';
     let [seriesData1, seriesData2] = [[], []];
@@ -52,6 +48,13 @@ export default function(data, chartID, options) {
       itemStyle: colorList[0],
       barMaxWidth: 20,
       barCategoryGap: '30%', //柱间距离
+      label: {
+        show: opts.labelShow,
+          position: 'top',
+          distance: 3,
+          color: '#333',
+          lineHeight: 15
+      }
     });
     series.push({
       type: 'bar',
@@ -60,6 +63,13 @@ export default function(data, chartID, options) {
       itemStyle: colorList[1],
       barMaxWidth: 20,
       barCategoryGap: '30%',
+      label: {
+        show: opts.labelShow,
+          position: 'top',
+          distance: 3,
+          color: '#333',
+          lineHeight: 15
+      }
     });
   } else {
     let seriesData = [];
@@ -76,6 +86,13 @@ export default function(data, chartID, options) {
         itemStyle: colorList[j],
         barMaxWidth: 20,
         barCategoryGap: '30%',
+        label: {
+          show: opts.labelShow,
+          position: 'top',
+          distance: 3,
+          color: '#333',
+          lineHeight: 15
+        }
       });
     }
   }

@@ -51,7 +51,7 @@
             nsCharts.simplePieChart(data, 'test2', {
                 radiusScale: ['52%', '68%'],
                 text: '完成率',
-                tooltipText: ['', '未完成项<br>1. 项目一<br>2. 项目二']
+                tooltipText: ['', '未完成项<br>1. 项目一<br>2. 项目二'],
             });
         });
         //引导线环形图
@@ -89,7 +89,7 @@
                 gridBottom: -10,
                 tooltipUnit: '万元',
                 legendName: ['计划', '实际'],
-				labelShow: true,
+				// labelShow: true,
                 dataZoomStyle: [0, 50, true, false],
                 showPlan: true
             });
@@ -131,7 +131,8 @@
                 gridRight: 30,
                 gridBottom: 10,
                 tooltipUnit: '%',
-                legendName: ['X公司', 'Y公司']
+                legendName: ['X公司', 'Y公司'],
+                labelShow: true
             });
         });
         //柱状单折线
@@ -143,7 +144,8 @@
                 gridBottom: -10,
                 legendName: ['计划', '实际'],
                 tooltipUnit: '元',
-                yAxisSplitNum: 2
+                yAxisSplitNum: 2,
+                labelShow: true
             });
         });
         //柱状双折线
@@ -153,7 +155,8 @@
                 gridTop: 50,
                 gridRight: 30,
                 gridBottom: -10,
-                legendName: ['净增长合同额', '接管合同额', '撤管合同额']
+                legendName: ['净增长合同额', '接管合同额', '撤管合同额'],
+                labelShow: true
             });
         });
     });
