@@ -1,6 +1,6 @@
-import echarts from 'echarts'
-import colorList from '../config/colorList2'
-import tooltipStyle from '../config/tooltipStyle'
+import echarts from 'echarts';
+import colorList from '../config/colorList2';
+import tooltipStyle from '../config/tooltipStyle';
 
 //柱状图
 export default function(data, chartID, options) {
@@ -19,7 +19,7 @@ export default function(data, chartID, options) {
       yAxisUnit: '', //Y轴单位
       yAxisSplitNum: 5, //Y轴分割线个数
       labelShow: false, //柱条文本是否显示
-      dataZoomStyle: [0, 100, true, false], //图表和dataZoom组件的开始位置，结束位置，是否禁用dataZoom组件以及是否显示组件
+      dataZoomStyle: [0, 100, false], //图表和dataZoom组件的开始位置，结束位置，是否使用dataZoom组件
       showPlan: false, //是否显示计划。注：当值为true时，确保包含数据的数组个数为1
       clickFn: null, //点击事件
       keyRef: {},
@@ -50,11 +50,11 @@ export default function(data, chartID, options) {
       barCategoryGap: '30%', //柱间距离
       label: {
         show: opts.labelShow,
-          position: 'top',
-          distance: 3,
-          color: '#333',
-          lineHeight: 15
-      }
+        position: 'top',
+        distance: 3,
+        color: '#333',
+        lineHeight: 15,
+      },
     });
     series.push({
       type: 'bar',
@@ -65,18 +65,19 @@ export default function(data, chartID, options) {
       barCategoryGap: '30%',
       label: {
         show: opts.labelShow,
-          position: 'top',
-          distance: 3,
-          color: '#333',
-          lineHeight: 15
-      }
+        position: 'top',
+        distance: 3,
+        color: '#333',
+        lineHeight: 15,
+      },
     });
   } else {
     let seriesData = [];
     for (let j = 0; j < data.length; j++) {
       seriesData.push([]);
       for (let k = 0; k < data[j].length; k++) {
-        j === 0 && xAxisNames.push(data[j][k].departmentName.replace(opts.xAxisFilter, '') + opts.xAxisUnit); //以第一个数组元素的值作为x轴的名称
+        j === 0 &&
+          xAxisNames.push(data[j][k].departmentName.replace(opts.xAxisFilter, '') + opts.xAxisUnit); //以第一个数组元素的值作为x轴的名称
         seriesData[j].push(data[j][k].actualTarget);
       }
       series.push({
@@ -91,8 +92,8 @@ export default function(data, chartID, options) {
           position: 'top',
           distance: 3,
           color: '#333',
-          lineHeight: 15
-        }
+          lineHeight: 15,
+        },
       });
     }
   }
@@ -103,11 +104,15 @@ export default function(data, chartID, options) {
       formatter: function(result) {
         let returnVal = result[0].name;
         for (let i = 0; i < result.length; i++) {
-          let marker = `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${result[i].color.colorStops[0].color};"></span>`;
+          let marker = `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${
+            result[i].color.colorStops[0].color
+          };"></span>`;
           if (result[i].seriesName === '') {
             returnVal += `<br>${result[i].value}${opts.tooltipUnit}`;
           } else {
-            returnVal += `<br>${marker}${result[i].seriesName}：${result[i].value}${opts.tooltipUnit}`;
+            returnVal += `<br>${marker}${result[i].seriesName}：${result[i].value}${
+              opts.tooltipUnit
+            }`;
           }
         }
         return returnVal;
@@ -163,16 +168,14 @@ export default function(data, chartID, options) {
         xAxisIndex: 0,
         start: opts.dataZoomStyle[0],
         end: opts.dataZoomStyle[1],
-        disabled: opts.dataZoomStyle[2],
-        zoomOnMouseWheel: false, //鼠标滚轮不能触发缩放
+        disabled: !opts.dataZoomStyle[2],
       },
       {
         type: 'slider', //dataZoom组件内拖动
         xAxisIndex: 0,
         start: opts.dataZoomStyle[0],
         end: opts.dataZoomStyle[1],
-        show: opts.dataZoomStyle[3],
-        zoomLock: true, //是否锁定选择区域
+        show: opts.dataZoomStyle[2],
       },
     ],
     series: series,
