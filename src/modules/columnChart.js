@@ -108,10 +108,12 @@ export default function(data, chartID, options) {
             result[i].color.colorStops[0].color
           };"></span>`;
           if (result[i].seriesName === '') {
-            returnVal += `<br>${result[i].value}${opts.tooltipUnit}`;
+            returnVal += `<br>${result[i].value}${
+              typeof opts.tooltipUnit === 'object' ? opts.tooltipUnit[i] : opts.tooltipUnit
+            }`;
           } else {
             returnVal += `<br>${marker}${result[i].seriesName}：${result[i].value}${
-              opts.tooltipUnit
+              typeof opts.tooltipUnit === 'object' ? opts.tooltipUnit[i] : opts.tooltipUnit
             }`;
           }
         }
