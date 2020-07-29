@@ -13,6 +13,7 @@ export default function(data, chartID, options) {
       labelLineLength: 10, //引导线第一段长度
       labelLineLength2: 10, //引导线第二段长度
       tooltipUnit: '', //提示框单位
+      tooltipLineFeed: false, //提示框分行
       clickFn: null, //点击事件
     },
     opts = Object.assign(defaultOpts, options);
@@ -83,7 +84,9 @@ export default function(data, chartID, options) {
                 unit = `万${unit}`;
               }
             }
-            return `${result.name}：${result.value}${unit} (${result.percent}%)`;
+            return opts.tooltipLineFeed
+              ? `${result.name}\n${result.value}${unit} (${result.percent}%)`
+              : `${result.name}：${result.value}${unit} (${result.percent}%)`;
           },
         },
         labelLine: {
