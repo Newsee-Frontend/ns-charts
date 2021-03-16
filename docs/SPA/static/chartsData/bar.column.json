@@ -1,173 +1,166 @@
 [
     [
         {
-            "actualTarget": "2808.78",
-            "departmentName": "济南城市公司",
-            "shouldTarget": "2808"
+            "actualDenominator": "6580.90",
+            "actualNumerator": "6414.74",
+            "actualTarget": "97.48",
+            "shouldRankName": "前五\n 123",
+            "actualRankName": "前五\n97.48",
+            "date": "2021",
+            "departmentID": "142",
+            "departmentName": "第五服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "123",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": "",
+            "unit": "%"
         },
         {
-            "actualTarget": "2099.32",
-            "departmentName": "泰安城市公司",
-            "shouldTarget": "2099"
+            "actualDenominator": "1463581.62",
+            "actualNumerator": "706316.40",
+            "actualTarget": "48.26",
+            "date": "2021",
+            "departmentID": "323",
+            "departmentName": "合晋世家管理处",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1610038834000,
+            "unit": "%"
         },
         {
-            "actualTarget": "2007.08",
-            "departmentName": "烟台城市公司",
-            "shouldTarget": "2007"
+            "actualDenominator": "7711743.57",
+            "actualNumerator": "3504783.17",
+            "actualTarget": "45.45",
+            "date": "2021",
+            "departmentID": "338",
+            "departmentName": "金匮里服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1738.57",
-            "departmentName": "黑龙江城市公司",
-            "shouldTarget": "1738"
+            "actualDenominator": "12690996.45",
+            "actualNumerator": "5605579.95",
+            "actualTarget": "44.17",
+            "date": "2021",
+            "departmentID": "343",
+            "departmentName": "西水东物业服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1710.92",
-            "departmentName": "济宁城市公司",
-            "shouldTarget": "1710"
+            "actualDenominator": "2905688.28",
+            "actualNumerator": "1281967.80",
+            "actualTarget": "44.12",
+            "date": "2021",
+            "departmentID": "1442",
+            "departmentName": "盛高大城四A五期服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1629.28",
-            "departmentName": "东营城市公司",
-            "shouldTarget": "1629"
+            "actualDenominator": "692553.52",
+            "actualNumerator": "26563.00",
+            "actualTarget": "3.84",
+            "date": "2021",
+            "departmentID": "132",
+            "departmentName": "海岸城服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1610701592000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1433.54",
-            "departmentName": "云南城市公司",
-            "shouldTarget": "1433"
+            "actualDenominator": "6710344.30",
+            "actualNumerator": "244874.80",
+            "actualTarget": "3.65",
+            "date": "2021",
+            "departmentID": "668",
+            "departmentName": "绿地与湖服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1142.31",
-            "departmentName": "北京城市公司",
-            "shouldTarget": "1142"
+            "actualDenominator": "13633588.56",
+            "actualNumerator": "442017.24",
+            "actualTarget": "3.24",
+            "date": "2021",
+            "departmentID": "1503",
+            "departmentName": "云都会项目服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "1081.50",
-            "departmentName": "安徽城市公司",
-            "shouldTarget": "1081"
+            "actualDenominator": "4018862.93",
+            "actualNumerator": "59743.70",
+            "actualTarget": "1.49",
+            "date": "2021",
+            "departmentID": "2561",
+            "departmentName": "中央广场商写B地块服务中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         },
         {
-            "actualTarget": "750.77",
-            "departmentName": "西安城市公司",
-            "shouldTarget": "750"
-        },
-        {
-            "actualTarget": "0.00",
-            "departmentName": "广州城市公司",
-            "shouldTarget": "0"
-        }
-    ],
-    [
-        {
-            "actualTarget": "2808.78",
-            "departmentName": "济南城市公司",
-            "shouldTarget": "2808"
-        },
-        {
-            "actualTarget": "2099.32",
-            "departmentName": "泰安城市公司",
-            "shouldTarget": "2099"
-        },
-        {
-            "actualTarget": "2007.08",
-            "departmentName": "烟台城市公司",
-            "shouldTarget": "2007"
-        },
-        {
-            "actualTarget": "1738.57",
-            "departmentName": "黑龙江城市公司",
-            "shouldTarget": "1738"
-        },
-        {
-            "actualTarget": "1710.92",
-            "departmentName": "济宁城市公司",
-            "shouldTarget": "1710"
-        },
-        {
-            "actualTarget": "1629.28",
-            "departmentName": "东营城市公司",
-            "shouldTarget": "1629"
-        },
-        {
-            "actualTarget": "1433.54",
-            "departmentName": "云南城市公司",
-            "shouldTarget": "1433"
-        },
-        {
-            "actualTarget": "1142.31",
-            "departmentName": "北京城市公司",
-            "shouldTarget": "1142"
-        },
-        {
-            "actualTarget": "1081.50",
-            "departmentName": "安徽城市公司",
-            "shouldTarget": "1081"
-        },
-        {
-            "actualTarget": "750.77",
-            "departmentName": "西安城市公司",
-            "shouldTarget": "750"
-        },
-        {
-            "actualTarget": "0.00",
-            "departmentName": "广州城市公司",
-            "shouldTarget": "0"
-        }
-    ],
-    [
-        {
-            "actualTarget": "2808.78",
-            "departmentName": "济南城市公司",
-            "shouldTarget": "2808"
-        },
-        {
-            "actualTarget": "2099.32",
-            "departmentName": "泰安城市公司",
-            "shouldTarget": "2099"
-        },
-        {
-            "actualTarget": "2007.08",
-            "departmentName": "烟台城市公司",
-            "shouldTarget": "2007"
-        },
-        {
-            "actualTarget": "1738.57",
-            "departmentName": "黑龙江城市公司",
-            "shouldTarget": "1738"
-        },
-        {
-            "actualTarget": "1710.92",
-            "departmentName": "济宁城市公司",
-            "shouldTarget": "1710"
-        },
-        {
-            "actualTarget": "1629.28",
-            "departmentName": "东营城市公司",
-            "shouldTarget": "1629"
-        },
-        {
-            "actualTarget": "1433.54",
-            "departmentName": "云南城市公司",
-            "shouldTarget": "1433"
-        },
-        {
-            "actualTarget": "1142.31",
-            "departmentName": "北京城市公司",
-            "shouldTarget": "1142"
-        },
-        {
-            "actualTarget": "1081.50",
-            "departmentName": "安徽城市公司",
-            "shouldTarget": "1081"
-        },
-        {
-            "actualTarget": "750.77",
-            "departmentName": "西安城市公司",
-            "shouldTarget": "750"
-        },
-        {
-            "actualTarget": "0.00",
-            "departmentName": "广州城市公司",
-            "shouldTarget": "0"
+            "actualDenominator": "18250125.62",
+            "actualNumerator": "240210.52",
+            "actualTarget": "1.32",
+            "date": "2021",
+            "departmentID": "933",
+            "departmentName": "绿地中心",
+            "shouldDenominator": "",
+            "shouldNumerator": "",
+            "shouldTarget": "",
+            "targetItem": "",
+            "targetLevel": "4",
+            "targetRemark": "收缴率为实收金额÷应收金额×100%",
+            "targetUpdateTime": 1611196338000,
+            "unit": "%"
         }
     ]
 ]
