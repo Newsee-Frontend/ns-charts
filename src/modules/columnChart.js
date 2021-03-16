@@ -54,6 +54,9 @@ export default function(data, chartID, options) {
         distance: 3,
         color: '#333',
         lineHeight: 15,
+        formatter(obj) {
+          return data[0][obj.dataIndex].shouldRankName || data[0][obj.dataIndex].shouldTarget;
+        },
       },
     });
     series.push({
@@ -69,6 +72,9 @@ export default function(data, chartID, options) {
         distance: 3,
         color: '#333',
         lineHeight: 15,
+        formatter(obj) {
+          return data[0][obj.dataIndex].actualRankName || data[0][obj.dataIndex].actualTarget;
+        },
       },
     });
   } else {
@@ -93,6 +99,9 @@ export default function(data, chartID, options) {
           distance: 3,
           color: '#333',
           lineHeight: 15,
+          formatter(obj) {
+            return data[j][obj.dataIndex].actualRankName || data[j][obj.dataIndex].actualTarget;
+          },
         },
       });
     }
