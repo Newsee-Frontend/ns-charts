@@ -24,7 +24,7 @@
     "vue": "2.5.21"
   },
   "devDependencies": {
-    "cx-builder": "^0.0.43",
+    "cx-builder": "^0.0.53-57",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
